@@ -15,6 +15,14 @@
       "options": { "cacheableOperations": ["build", "lint", "test", "e2e"] }
     }
   },
-  "projects": {},
-  "workspaceLayout": { "appsDir": "packages", "libsDir": "packages" }
+  "projects": {
+    "ddd": { "tags": [] },
+    "ddd-e2e": { "tags": [], "implicitDependencies": ["ddd"] },
+    "semantic-release": { "tags": [] },
+    "semantic-release-e2e": {
+      "tags": [],
+      "implicitDependencies": ["semantic-release"]
+    }
+  },
+  "workspaceLayout": { "appsDir": "e2e", "libsDir": "packages" }
 }

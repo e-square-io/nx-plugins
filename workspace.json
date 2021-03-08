@@ -1,5 +1,138 @@
 {
   "version": 2,
-  "projects": {},
-  "cli": { "defaultCollection": "@nrwl/workspace" }
+  "projects": {
+    "ddd": {
+      "root": "packages/ddd",
+      "sourceRoot": "packages/ddd/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["packages/ddd/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/packages/ddd"],
+          "options": {
+            "jestConfig": "packages/ddd/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/packages/ddd",
+            "tsConfig": "packages/ddd/tsconfig.lib.json",
+            "packageJson": "packages/ddd/package.json",
+            "main": "packages/ddd/src/index.ts",
+            "assets": [
+              "packages/ddd/*.md",
+              {
+                "input": "./packages/ddd/src",
+                "glob": "**/*.!(ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./packages/ddd",
+                "glob": "generators.json",
+                "output": "."
+              },
+              {
+                "input": "./packages/ddd",
+                "glob": "executors.json",
+                "output": "."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "ddd-e2e": {
+      "projectType": "application",
+      "root": "e2e/ddd-e2e",
+      "sourceRoot": "e2e/ddd-e2e/src",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/nx-plugin:e2e",
+          "options": {
+            "target": "ddd:build",
+            "npmPackageName": "@e-square/ddd",
+            "pluginOutputPath": "dist/packages/ddd",
+            "jestConfig": "e2e/ddd-e2e/jest.config.js"
+          }
+        }
+      }
+    },
+    "semantic-release": {
+      "root": "packages/semantic-release",
+      "sourceRoot": "packages/semantic-release/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["packages/semantic-release/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/packages/semantic-release"],
+          "options": {
+            "jestConfig": "packages/semantic-release/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/packages/semantic-release",
+            "tsConfig": "packages/semantic-release/tsconfig.lib.json",
+            "packageJson": "packages/semantic-release/package.json",
+            "main": "packages/semantic-release/src/index.ts",
+            "assets": [
+              "packages/semantic-release/*.md",
+              {
+                "input": "./packages/semantic-release/src",
+                "glob": "**/*.!(ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./packages/semantic-release",
+                "glob": "generators.json",
+                "output": "."
+              },
+              {
+                "input": "./packages/semantic-release",
+                "glob": "executors.json",
+                "output": "."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "semantic-release-e2e": {
+      "projectType": "application",
+      "root": "e2e/semantic-release-e2e",
+      "sourceRoot": "e2e/semantic-release-e2e/src",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/nx-plugin:e2e",
+          "options": {
+            "target": "semantic-release:build",
+            "npmPackageName": "@e-square/semantic-release",
+            "pluginOutputPath": "dist/packages/semantic-release",
+            "jestConfig": "e2e/semantic-release-e2e/jest.config.js"
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/workspace"
+  }
 }
