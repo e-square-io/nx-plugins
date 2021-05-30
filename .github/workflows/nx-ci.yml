@@ -1,0 +1,77 @@
+name: NX CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  setup:
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    name: Setup
+    runs-on: ubuntu-latest
+    outputs:
+      hasChanges: ${{ steps.affected.outputs.hasChanges }}
+      matrix: ${{ steps.affected.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Cache npm
+        uses: actions/cache@v2
+        with:
+          path: .npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+            ${{ runner.os }}-
+
+      - name: Install Dependencies
+        run: npm ci --cache .npm
+
+      - name: Calculate Affected Projects
+        uses: e-square-io/nx-github-actions/dist/packages/nx-affected-matrix@master
+        id: affected
+        with:
+          targets: 'test,build'
+
+  distributed-task:
+    name: Run ${{ matrix.target }} ${{ matrix.bucket }}
+    if: ${{ needs.setup.outputs.hasChanges == 'true' }}
+    runs-on: ubuntu-latest
+    needs: [setup]
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.setup.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Cache npm
+        uses: actions/cache@v2
+        with:
+          path: .npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+            ${{ runner.os }}-
+
+      - name: Install Dependencies
+        run: npm ci --cache .npm
+
+      - name: Execute target
+        uses: e-square-io/nx-github-actions/dist/packages/nx-distributed-task@master
+        id: execute
+        with:
+          target: ${{ matrix.target }}
+          bucket: ${{ matrix.bucket }}
+          projects: ${{ matrix.projects }}
