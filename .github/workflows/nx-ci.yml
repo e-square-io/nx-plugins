@@ -36,7 +36,7 @@ jobs:
         run: npm ci --cache .npm
 
       - name: Calculate Affected Projects
-        uses: e-square-io/nx-github-actions/dist/packages/nx-affected-matrix@master
+        uses: e-square-io/nx-github-actions/dist/packages/nx-affected-matrix@1
         id: affected
         with:
           targets: 'test,build'
@@ -69,7 +69,7 @@ jobs:
         run: npm ci --cache .npm
 
       - name: Execute target
-        uses: e-square-io/nx-github-actions/dist/packages/nx-distributed-task@master
+        uses: e-square-io/nx-github-actions/dist/packages/nx-distributed-task@1
         id: execute
         with:
           target: ${{ matrix.target }}
