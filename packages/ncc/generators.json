@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "name": "ncc",
+  "version": "0.0.1",
+  "generators": {
+    "ncc": {
+      "factory": "./src/generators/ncc/generator",
+      "schema": "./src/generators/ncc/schema.json",
+      "description": "ncc generator"
+    }
+  }
+}

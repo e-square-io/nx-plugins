@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "type": "object",
+  "cli": "nx",
+  "properties": {
+    "main": {
+      "type": "string",
+      "description": "The path to the entry file"
+    },
+    "outputPath": {
+      "type": "string",
+      "description": "The path to the output"
+    },
+    "tsConfig": {
+      "type": "string",
+      "description": "The path to the tsconfig file"
+    },
+    "watch": {
+      "type": "boolean",
+      "description": "Enable re-building when files change.",
+      "default": false
+    },
+    "sourceMap": {
+      "oneOf": [
+        {
+          "type": "boolean",
+          "description": "Output sourcemaps."
+        },
+        {
+          "type": "object",
+          "properties": {
+            "hidden": {
+              "type": "boolean",
+              "description": "produces hidden sourcemaps"
+            },
+            "additionalProperties": false,
+            "required": ["hidden"]
+          }
+        }
+      ],
+      "default": false
+    },
+    "optimization": {
+      "type": "boolean",
+      "description": "minify the code",
+      "default": false
+    },
+    "statsJson": {
+      "type": "boolean",
+      "description": "produce webpack stats file in output directory",
+      "default": false
+    },
+    "quiet": {
+      "type": "boolean",
+      "description": "log only errors",
+      "default": false
+    },
+    "target": {
+      "type": "string",
+      "description": "ECMAScript target to use for output (default: es2015)"
+    },
+    "externalModules": {
+      "type": "array",
+      "description": "List of modules to keep external to the build",
+      "default": [],
+      "items": {
+        "type": "string"
+      }
+    },
+    "assets": {
+      "type": "array",
+      "description": "List of static library assets.",
+      "default": [],
+      "items": {
+        "$ref": "#/definitions/assetPattern"
+      }
+    }
+  },
+  "required": ["tsConfig", "outputPath", "main"],
+
+  "definitions": {
+    "assetPattern": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "glob": {
+              "type": "string",
+              "description": "The pattern to match."
+            },
+            "input": {
+              "type": "string",
+              "description": "The input directory path in which to apply 'glob'. Defaults to the project root."
+            },
+            "ignore": {
+              "description": "An array of globs to ignore.",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "output": {
+              "type": "string",
+              "description": "Absolute path within the output."
+            }
+          },
+          "additionalProperties": false,
+          "required": ["glob", "input", "output"]
+        },
+        {
+          "type": "string"
+        }
+      ]
+    }
+  }
+}

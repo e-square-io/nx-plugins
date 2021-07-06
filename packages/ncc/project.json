@@ -1,0 +1,55 @@
+{
+  "root": "packages/ncc",
+  "sourceRoot": "packages/ncc/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["packages/ncc/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/ncc"],
+      "options": {
+        "jestConfig": "packages/ncc/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/ncc",
+        "tsConfig": "packages/ncc/tsconfig.lib.json",
+        "packageJson": "packages/ncc/package.json",
+        "main": "packages/ncc/src/index.ts",
+        "assets": [
+          "packages/ncc/*.md",
+          {
+            "input": "./packages/ncc/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./packages/ncc/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
+          {
+            "input": "./packages/ncc",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./packages/ncc",
+            "glob": "executors.json",
+            "output": "."
+          }
+        ]
+      }
+    }
+  },
+  "tags": []
+}

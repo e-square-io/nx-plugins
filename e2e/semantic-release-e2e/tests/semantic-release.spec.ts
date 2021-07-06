@@ -11,14 +11,14 @@ describe('semantic-release e2e', () => {
   beforeEach(() => {
     plugin = uniq('semantic-release');
     ensureNxProject(
-      '@e-square/semantic-release',
+      'e-square/nx-semantic-release',
       'dist/packages/semantic-release'
     );
   });
 
   it('should create semantic-release', async (done) => {
     await runNxCommandAsync(
-      `generate @e-square/semantic-release:semantic-release ${plugin}`
+      `generate e-square/nx-semantic-release:semantic-release ${plugin}`
     );
     const result = await runNxCommandAsync(`build ${plugin}`);
 
@@ -29,7 +29,7 @@ describe('semantic-release e2e', () => {
   describe('--directory', () => {
     it('should create src in the specified directory', async (done) => {
       await runNxCommandAsync(
-        `generate @e-square/semantic-release:semantic-release ${plugin} --directory subdir`
+        `generate e-square/nx-semantic-release:semantic-release ${plugin} --directory subdir`
       );
 
       expect(() =>
@@ -42,7 +42,7 @@ describe('semantic-release e2e', () => {
   describe('--tags', () => {
     it('should add tags to nx.json', async (done) => {
       await runNxCommandAsync(
-        `generate @e-square/semantic-release:semantic-release ${plugin} --tags e2etag,e2ePackage`
+        `generate e-square/nx-semantic-release:semantic-release ${plugin} --tags e2etag,e2ePackage`
       );
       const nxJson = readJson('nx.json');
 

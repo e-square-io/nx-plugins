@@ -10,11 +10,11 @@ describe('ddd e2e', () => {
 
   beforeEach(() => {
     plugin = uniq('ddd');
-    ensureNxProject('@e-square/ddd', 'dist/packages/ddd');
+    ensureNxProject('e-square/nx-ddd', 'dist/packages/ddd');
   });
 
   it('should create ddd', async (done) => {
-    await runNxCommandAsync(`generate @e-square/ddd:ddd ${plugin}`);
+    await runNxCommandAsync(`generate e-square/nx-ddd:ddd ${plugin}`);
     const result = await runNxCommandAsync(`build ${plugin}`);
 
     expect(result.stdout).toContain('Executor ran');
@@ -24,7 +24,7 @@ describe('ddd e2e', () => {
   describe('--directory', () => {
     it('should create src in the specified directory', async (done) => {
       await runNxCommandAsync(
-        `generate @e-square/ddd:ddd ${plugin} --directory subdir`
+        `generate e-square/nx-ddd:ddd ${plugin} --directory subdir`
       );
 
       expect(() =>
@@ -37,7 +37,7 @@ describe('ddd e2e', () => {
   describe('--tags', () => {
     it('should add tags to nx.json', async (done) => {
       await runNxCommandAsync(
-        `generate @e-square/ddd:ddd ${plugin} --tags e2etag,e2ePackage`
+        `generate e-square/nx-ddd:ddd ${plugin} --tags e2etag,e2ePackage`
       );
       const nxJson = readJson('nx.json');
 

@@ -1,0 +1,18 @@
+{
+  "projectType": "application",
+  "root": "e2e/semantic-release-e2e",
+  "sourceRoot": "e2e/semantic-release-e2e/src",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/nx-plugin:e2e",
+      "options": {
+        "target": "semantic-release:build",
+        "npmPackageName": "e-square/nx-semantic-release",
+        "pluginOutputPath": "dist/packages/semantic-release",
+        "jestConfig": "e2e/semantic-release-e2e/jest.config.js"
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["semantic-release"]
+}

@@ -1,0 +1,50 @@
+{
+  "root": "packages/semantic-release",
+  "sourceRoot": "packages/semantic-release/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["packages/semantic-release/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/semantic-release"],
+      "options": {
+        "jestConfig": "packages/semantic-release/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/semantic-release",
+        "tsConfig": "packages/semantic-release/tsconfig.lib.json",
+        "packageJson": "packages/semantic-release/package.json",
+        "main": "packages/semantic-release/src/index.ts",
+        "assets": [
+          "packages/semantic-release/*.md",
+          {
+            "input": "./packages/semantic-release/src",
+            "glob": "**/*.!(ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./packages/semantic-release",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./packages/semantic-release",
+            "glob": "executors.json",
+            "output": "."
+          }
+        ]
+      }
+    }
+  },
+  "tags": []
+}
