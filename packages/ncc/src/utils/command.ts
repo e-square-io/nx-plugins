@@ -29,6 +29,7 @@ export function runNccCommand<T extends BaseExecutorSchema>(
         opts.main
       } ${normalizeArgs(opts)}`
     );
+
     const processExitListener = () => {
       execProcess.kill(0);
       observer.complete();

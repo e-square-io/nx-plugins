@@ -29,17 +29,18 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@angular-devkit/schematics": "^12.1.1",
+    "@nrwl/devkit": "12.5.4",
+    "@nrwl/workspace": "^12.5.4",
     "@vercel/ncc": "^0.28.6",
     "rxjs": "^7.1.0",
     "rxjs-for-await": "0.0.2"
   },
   "devDependencies": {
-    "@angular-devkit/schematics": "^12.1.1",
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-angular": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
     "@nrwl/cli": "^12.5.4",
-    "@nrwl/devkit": "12.5.4",
     "@nrwl/eslint-plugin-nx": "^12.5.4",
     "@nrwl/jest": "^12.5.4",
     "@nrwl/linter": "^12.5.4",
@@ -47,7 +48,6 @@
     "@nrwl/nx-cloud": "^12.2.7",
     "@nrwl/nx-plugin": "^12.5.4",
     "@nrwl/tao": "^12.5.4",
-    "@nrwl/workspace": "^12.5.4",
     "@types/jest": "26.0.23",
     "@types/node": "14.14.33",
     "@typescript-eslint/eslint-plugin": "4.19.0",
