@@ -33,12 +33,12 @@ export function normalizeOptions<T extends BaseExecutorSchema>(
 
   return {
     ...opts,
+    main: resolve(root, opts.main),
+    tsConfig: resolve(root, opts.tsConfig),
     assets: opts.assets ?? [],
     root,
     projectRoot,
     sourceRoot: resolve(root, projectConfig.sourceRoot || ''),
-    tsConfig: resolve(root, opts.tsConfig),
-    main: resolve(root, opts.main),
   };
 }
 

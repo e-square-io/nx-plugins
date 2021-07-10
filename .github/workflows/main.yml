@@ -158,7 +158,7 @@ jobs:
       - name: Publish to NPM
         if: steps.release.outputs.released == 'true'
         run: |
-          for path in ./dist/*; do
+          for path in ./dist/packages/*; do
             cd "$path" && npm version "${{ steps.release.outputs.version }}" --no-git-tag-version --allow-same-version && npm publish && cd -
           done
         env:
