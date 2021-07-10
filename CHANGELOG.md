@@ -1,3 +1,9 @@
+## [1.0.1](https://github.com/e-square-io/nx-plugins/compare/v1.0.0...v1.0.1) (2021-07-10)
+
+### Bug Fixes
+
+- **ncc:** normalize cli args ([e31cf1f](https://github.com/e-square-io/nx-plugins/commit/e31cf1f774d912da01389b82b1747b2743be9352))
+
 # 1.0.0 (2021-07-10)
 
 ### Bug Fixes
