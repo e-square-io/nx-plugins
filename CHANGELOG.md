@@ -1,3 +1,9 @@
+## [1.0.6](https://github.com/e-square-io/nx-plugins/compare/v1.0.5...v1.0.6) (2021-07-10)
+
+### Bug Fixes
+
+- **ncc:** add npm deps ([14922b7](https://github.com/e-square-io/nx-plugins/commit/14922b7c5e178c588213f68330ac38b20b24ed3c))
+
 ## [1.0.5](https://github.com/e-square-io/nx-plugins/compare/v1.0.4...v1.0.5) (2021-07-10)
 
 ### Bug Fixes
