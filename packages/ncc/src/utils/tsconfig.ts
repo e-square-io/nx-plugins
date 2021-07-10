@@ -18,6 +18,7 @@ export function replaceTsConfigFiles(
       return;
     }
 
+    // get processed tsconfig file
     const finalTsConfig = JSON.parse(
       execSync(`tsc -p ${options.tsConfig} --showConfig`, {
         encoding: 'utf-8',

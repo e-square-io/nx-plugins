@@ -28,7 +28,6 @@
     "commit": "git-cz",
     "prepare": "husky install"
   },
-  "private": true,
   "dependencies": {
     "@vercel/ncc": "^0.28.6",
     "rxjs": "^7.1.0",
