@@ -46,13 +46,13 @@ export function normalizeArgs<T extends NormalizedExecutorSchema>(
   opts: T
 ): string {
   const args = [];
+  // push skip cache (as nx cache is used)
+  args.push('-C');
+
   // push output path
   if ((opts as any).outputPath) {
     args.push(`-o ${(opts as any).outputPath}`);
   }
-
-  // push skip cache (as nx cache is used)
-  args.push('-C');
 
   if ((opts as any).watch) {
     args.push(`-w`);
