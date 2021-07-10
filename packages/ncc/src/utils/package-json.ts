@@ -1,10 +1,10 @@
-import { createProjectGraph } from '@nrwl/workspace/src/core/project-graph';
-import { readWorkspaceConfig } from '@nrwl/workspace';
 import { logger, readJsonFile, writeJsonFile } from '@nrwl/devkit';
+import { readWorkspaceConfig } from '@nrwl/workspace';
+import { createProjectGraph } from '@nrwl/workspace/src/core/project-graph';
+import { workspaceFileName } from '@nrwl/workspace/src/core/file-utils';
 import { createPackageJson } from '@nrwl/workspace/src/utilities/create-package-json';
 import { basename } from 'path';
 import { NormalizedExecutorSchema } from './normalize';
-import { workspaceFileName } from '@nrwl/workspace/src/core/file-utils';
 
 export function generatePackageJson(
   projectName: string,

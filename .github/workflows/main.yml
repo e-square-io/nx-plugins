@@ -153,7 +153,8 @@ jobs:
         if: steps.release.outputs.released == 'true'
         uses: actions/setup-node@v2
         with:
-          scope: '@e-square'
+          node-version: 14
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Publish to NPM
         if: steps.release.outputs.released == 'true'
