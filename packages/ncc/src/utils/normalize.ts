@@ -60,7 +60,7 @@ export function normalizeArgs<T extends NormalizedExecutorSchema>(
 
   if (opts.sourceMap) {
     args.push(`-s`);
-    if (typeof opts.sourceMap !== 'boolean' && opts.sourceMap.hidden) {
+    if (typeof opts.sourceMap !== 'boolean' && opts.sourceMap?.hidden) {
       args.push('--no-source-map-register');
     }
   }
