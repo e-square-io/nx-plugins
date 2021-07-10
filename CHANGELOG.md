@@ -1,3 +1,9 @@
+## [1.0.5](https://github.com/e-square-io/nx-plugins/compare/v1.0.4...v1.0.5) (2021-07-10)
+
+### Bug Fixes
+
+- npm publish step ([7886c0f](https://github.com/e-square-io/nx-plugins/commit/7886c0fa0641d54820200ba646804e5e0fca33f4))
+
 ## [1.0.4](https://github.com/e-square-io/nx-plugins/compare/v1.0.3...v1.0.4) (2021-07-10)
 
 ### Bug Fixes
