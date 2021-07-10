@@ -1,3 +1,9 @@
+## [1.0.7](https://github.com/e-square-io/nx-plugins/compare/v1.0.6...v1.0.7) (2021-07-10)
+
+### Bug Fixes
+
+- **ncc:** add angular schematic as dependency ([28853ba](https://github.com/e-square-io/nx-plugins/commit/28853ba517c5e4389dc319bd2d1cce3c6de61522))
+
 ## [1.0.6](https://github.com/e-square-io/nx-plugins/compare/v1.0.5...v1.0.6) (2021-07-10)
 
 ### Bug Fixes
