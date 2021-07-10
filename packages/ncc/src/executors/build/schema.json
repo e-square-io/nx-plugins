@@ -40,6 +40,11 @@
       ],
       "default": false
     },
+    "generatePackageJson": {
+      "type": "boolean",
+      "description": "Generates a package.json file with the project's node_module dependencies populated for installing in a container. If a package.json exists in the project's directory, it will be reused with dependencies populated.",
+      "default": false
+    },
     "optimization": {
       "type": "boolean",
       "description": "minify the code",
@@ -59,7 +64,7 @@
       "type": "string",
       "description": "ECMAScript target to use for output (default: es2015)"
     },
-    "externalModules": {
+    "externalDependencies": {
       "type": "array",
       "description": "List of modules to keep external to the build",
       "default": [],

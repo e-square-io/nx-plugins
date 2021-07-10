@@ -14,7 +14,8 @@
       "outputs": ["coverage/packages/semantic-release"],
       "options": {
         "jestConfig": "packages/semantic-release/jest.config.js",
-        "passWithNoTests": true
+        "passWithNoTests": true,
+        "codeCoverage": true
       }
     },
     "build": {

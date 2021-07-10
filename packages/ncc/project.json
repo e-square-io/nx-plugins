@@ -14,7 +14,8 @@
       "outputs": ["coverage/packages/ncc"],
       "options": {
         "jestConfig": "packages/ncc/jest.config.js",
-        "passWithNoTests": true
+        "passWithNoTests": true,
+        "codeCoverage": true
       }
     },
     "build": {

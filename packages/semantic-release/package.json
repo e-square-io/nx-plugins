@@ -1,5 +1,5 @@
 {
-  "name": "e-square/nx-semantic-release",
+  "name": "@e-square/nx-semantic-release",
   "version": "0.0.1",
   "main": "src/index.js",
   "generators": "./generators.json",

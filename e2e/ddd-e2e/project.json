@@ -7,7 +7,7 @@
       "executor": "@nrwl/nx-plugin:e2e",
       "options": {
         "target": "ddd:build",
-        "npmPackageName": "e-square/nx-ddd",
+        "npmPackageName": "@e-square/nx-ddd",
         "pluginOutputPath": "dist/packages/ddd",
         "jestConfig": "e2e/ddd-e2e/jest.config.js"
       }

@@ -1,11 +1,9 @@
 import { NccBuildExecutorSchema } from './schema';
+
+jest.mock('../../utils');
+
 import executor from './executor';
-
-jest.mock('./executor');
-
-import * as exec from './executor';
 import * as utils from '@nrwl/workspace/src/utilities/assets';
-import { of } from 'rxjs';
 
 const options: NccBuildExecutorSchema = {
   main: '',
@@ -14,21 +12,9 @@ const options: NccBuildExecutorSchema = {
 };
 
 describe('Build Executor', () => {
-  let nccCommand, generateJson, replaceTsConfig, copyAssets;
+  let copyAssets;
 
   beforeEach(() => {
-    jest
-      .spyOn(exec, 'default')
-      .mockImplementation((...args) => executor(...args));
-    nccCommand = jest
-      .spyOn(exec, 'runNccCommand')
-      .mockReturnValue(of({ success: true }));
-    generateJson = jest
-      .spyOn(exec, 'generatePackageJson')
-      .mockImplementation(() => undefined);
-    replaceTsConfig = jest
-      .spyOn(exec, 'replaceTsConfigFiles')
-      .mockImplementation(() => undefined);
     copyAssets = jest
       .spyOn(utils, 'copyAssetFiles')
       .mockReturnValue(Promise.resolve({ success: true }));
@@ -37,7 +23,7 @@ describe('Build Executor', () => {
   afterEach(() => jest.clearAllMocks());
 
   it('can run', async () => {
-    const output = await exec.default(options, {
+    const output = await executor(options, {
       target: {
         executor: '',
       },
@@ -56,6 +42,6 @@ describe('Build Executor', () => {
         },
       },
     });
-    await expect((await output.next()).value).resolves.toBe(true);
+    expect((await output.next()).value).toEqual({ success: true });
   });
 });

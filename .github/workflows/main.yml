@@ -17,7 +17,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
         with:
           node-version: 14
 
@@ -50,7 +50,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
         with:
           node-version: 14
 
@@ -148,3 +148,18 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ steps.githubAppAuth.outputs.token }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Setup Node
+        if: steps.release.outputs.released == 'true'
+        uses: actions/setup-node@v2
+        with:
+          scope: '@e-square'
+
+      - name: Publish to NPM
+        if: steps.release.outputs.released == 'true'
+        run: |
+          for path in ./dist/*; do
+            cd "$path" && npm version "${{ steps.release.outputs.version }}" && npm publish && cd -
+          done
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

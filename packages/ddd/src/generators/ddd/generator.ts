@@ -63,7 +63,7 @@ export default async function (host: Tree, options: DddGeneratorSchema) {
     sourceRoot: `${normalizedOptions.projectRoot}/src`,
     targets: {
       build: {
-        executor: 'e-square/nx-ddd:build',
+        executor: '@e-square/nx-ddd:build',
       },
     },
     tags: normalizedOptions.parsedTags,

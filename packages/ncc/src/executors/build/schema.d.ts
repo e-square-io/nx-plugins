@@ -1,19 +1,7 @@
-import type { AssetGlob } from '@nrwl/workspace/src/utilities/assets';
-import type { SourceMapOptions } from '@nrwl/node/src/utils/types';
+import { BaseExecutorSchema } from '../../utils';
 
-export interface NccBuildExecutorSchema {
-  main: string;
+export interface NccBuildExecutorSchema extends BaseExecutorSchema {
   outputPath: string;
-  tsConfig: string;
+  generatePackageJson?: boolean;
   watch?: boolean;
-  sourceMap?: boolean | Pick<SourceMapOptions, 'hidden'>;
-  optimization?: boolean;
-  assets?: (string | AssetGlob)[];
-  statsJson?: boolean;
-  quiet?: boolean;
-  target?: string;
-  externalModules?: string[];
-  root?: string;
-  sourceRoot?: string;
-  projectRoot?: string;
 }

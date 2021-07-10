@@ -1,1 +1,3 @@
-export interface NccServeExecutorSchema {} // eslint-disable-line
+import { BaseExecutorSchema } from '../../utils';
+
+export type NccServeExecutorSchema = BaseExecutorSchema;
