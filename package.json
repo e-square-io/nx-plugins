@@ -29,7 +29,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@angular-devkit/schematics": "^12.1.1",
+    "@angular-devkit/schematics": "^12.1.2",
     "@nrwl/devkit": "12.5.4",
     "@nrwl/workspace": "^12.5.4",
     "@vercel/ncc": "^0.28.6",
