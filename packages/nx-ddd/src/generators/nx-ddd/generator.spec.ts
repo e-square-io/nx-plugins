@@ -2,11 +2,11 @@ import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import { Tree, readProjectConfiguration } from '@nrwl/devkit';
 
 import generator from './generator';
-import { DddGeneratorSchema } from './schema';
+import { NxDddGeneratorSchema } from './schema';
 
-describe('ddd generator', () => {
+describe('nx-ddd generator', () => {
   let appTree: Tree;
-  const options: DddGeneratorSchema = { name: 'test' };
+  const options: NxDddGeneratorSchema = { name: 'test' };
 
   beforeEach(() => {
     appTree = createTreeWithEmptyWorkspace();

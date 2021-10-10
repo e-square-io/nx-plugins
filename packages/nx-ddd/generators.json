@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "name": "nx-ddd",
+  "version": "0.0.1",
+  "generators": {
+    "nx-ddd": {
+      "factory": "./src/generators/nx-ddd/generator",
+      "schema": "./src/generators/nx-ddd/schema.json",
+      "description": "nx-ddd generator"
+    }
+  }
+}

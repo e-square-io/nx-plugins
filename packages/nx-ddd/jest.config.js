@@ -1,13 +1,15 @@
 module.exports = {
-  displayName: 'ddd',
+  displayName: 'nx-ddd',
   preset: '../../jest.preset.js',
   globals: {
-    'ts-jest': { tsconfig: '<rootDir>/tsconfig.spec.json' },
+    'ts-jest': {
+      tsconfig: '<rootDir>/tsconfig.spec.json',
+    },
   },
+  testEnvironment: 'node',
   transform: {
     '^.+\\.[tj]sx?$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/packages/ddd',
-  testEnvironment: 'node',
+  coverageDirectory: '../../coverage/packages/nx-ddd',
 };

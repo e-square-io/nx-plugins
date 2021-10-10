@@ -20,7 +20,7 @@ To get more information click on the plugin link.
 | [@e-square/nx-semantic-release] | [![NPM][nx-semantic-release-badge]][nx-semantic-release-link] | Enables usages of semantic-release per app/publishable lib |
 |       [@e-square/nx-ncc]        |       [![NPM][nx-ncc-badge]][nx-semantic-release-link]        |           Enables usage @vercel/ncc as executor            |
 
-[@e-square/nx-ddd]: ./packages/ddd
+[@e-square/nx-ddd]: ./packages/nx-ddd
 [nx-ddd-link]: https://www.npmjs.com/package/@e-square/nx-ddd
 [nx-ddd-badge]: https://img.shields.io/npm/v/@e-square/nx-ddd?logo=npm&style=flat-square
 [@e-square/nx-semantic-release]: ./packages/semantic-release

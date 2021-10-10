@@ -8,9 +8,9 @@ import {
   Tree,
 } from '@nrwl/devkit';
 import * as path from 'path';
-import { DddGeneratorSchema } from './schema';
+import { NxDddGeneratorSchema } from './schema';
 
-interface NormalizedSchema extends DddGeneratorSchema {
+interface NormalizedSchema extends NxDddGeneratorSchema {
   projectName: string;
   projectRoot: string;
   projectDirectory: string;
@@ -19,7 +19,7 @@ interface NormalizedSchema extends DddGeneratorSchema {
 
 function normalizeOptions(
   host: Tree,
-  options: DddGeneratorSchema
+  options: NxDddGeneratorSchema
 ): NormalizedSchema {
   const name = names(options.name).fileName;
   const projectDirectory = options.directory
@@ -55,7 +55,7 @@ function addFiles(host: Tree, options: NormalizedSchema) {
   );
 }
 
-export default async function (host: Tree, options: DddGeneratorSchema) {
+export default async function (host: Tree, options: NxDddGeneratorSchema) {
   const normalizedOptions = normalizeOptions(host, options);
   addProjectConfiguration(host, normalizedOptions.projectName, {
     root: normalizedOptions.projectRoot,
