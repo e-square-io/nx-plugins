@@ -24,6 +24,20 @@
         "maintenance",
         "test"
       ]
+    },
+    {
+      "login": "avivharuzi",
+      "name": "Aviv Haruzi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/29040832?v=4",
+      "profile": "https://github.com/avivharuzi",
+      "contributions": [
+        "code",
+        "doc",
+        "ideas",
+        "infra",
+        "maintenance",
+        "tool"
+      ]
     }
   ],
   "contributorsPerLine": 7

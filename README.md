@@ -50,6 +50,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://github.com/ronnetzer"><img src="https://avatars.githubusercontent.com/u/1116785?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ron Netzer</b></sub></a><br /><a href="https://github.com/ronnetzer/test/commits?author=ronnetzer" title="Code">💻</a> <a href="#content-ronnetzer" title="Content">🖋</a> <a href="https://github.com/ronnetzer/test/commits?author=ronnetzer" title="Documentation">📖</a> <a href="#example-ronnetzer" title="Examples">💡</a> <a href="#ideas-ronnetzer" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-ronnetzer" title="Maintenance">🚧</a> <a href="https://github.com/ronnetzer/test/commits?author=ronnetzer" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/avivharuzi"><img src="https://avatars.githubusercontent.com/u/29040832?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Aviv Haruzi</b></sub></a><br /><a href="https://github.com/ronnetzer/test/commits?author=avivharuzi" title="Code">💻</a> <a href="https://github.com/ronnetzer/test/commits?author=avivharuzi" title="Documentation">📖</a> <a href="#ideas-avivharuzi" title="Ideas, Planning, & Feedback">🤔</a> <a href="#infra-avivharuzi" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-avivharuzi" title="Maintenance">🚧</a> <a href="#tool-avivharuzi" title="Tools">🔧</a></td>
   </tr>
 </table>
 
