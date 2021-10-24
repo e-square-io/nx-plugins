@@ -37,7 +37,7 @@ export const updateEslintDepConstraints = (
   });
 };
 
-const getEslintFilePath = (): string => {
+export const getEslintFilePath = (): string => {
   const eslintFilePaths = ['.eslintrc', '.eslintrc.json'];
   const eslintFilePath = eslintFilePaths.find((eslintFilePath) =>
     fileExists(eslintFilePath)
@@ -48,7 +48,7 @@ const getEslintFilePath = (): string => {
   return eslintFilePath;
 };
 
-const filterDepConstraintsDuplicates = (
+export const filterDepConstraintsDuplicates = (
   depConstraints: DepConstraint[],
   ruleDepConstraints: DepConstraint[]
 ): DepConstraint[] => {

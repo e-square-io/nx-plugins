@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "cli": "nx",
+  "id": "init",
+  "title": "Add eslint rules for enforce-module-boundaries",
+  "type": "object",
+  "properties": {}
+}
