@@ -27,6 +27,7 @@
         "main": "packages/ddd/src/index.ts",
         "assets": [
           "packages/ddd/*.md",
+          "packages/ddd/LICENSE",
           {
             "input": "./packages/ddd/src",
             "glob": "**/!(*.ts)",

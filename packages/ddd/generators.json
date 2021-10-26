@@ -16,7 +16,7 @@
     "react": {
       "factory": "./src/generators/react/generator",
       "schema": "./src/generators/react/schema.json",
-      "description": "Create an React ddd library"
+      "description": "Create a React ddd library"
     }
   }
 }
