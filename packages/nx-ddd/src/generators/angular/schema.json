@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "cli": "nx",
+  "id": "angular",
+  "title": "Create an Angular ddd library",
+  "type": "object",
+  "properties": {
+    "libraryType": {
+      "type": "string",
+      "enum": ["feature", "ui", "data-access", "util"],
+      "description": "The library type.",
+      "x-prompt": {
+        "message": "What library type you are looking for?",
+        "type": "list",
+        "items": [
+          {
+            "value": "feature",
+            "label": "feature"
+          },
+          {
+            "value": "ui",
+            "label": "ui"
+          },
+          {
+            "value": "data-access",
+            "label": "data-access"
+          },
+          {
+            "value": "util",
+            "label": "util"
+          }
+        ]
+      },
+      "default": "data-access"
+    },
+    "domainName": {
+      "type": "string",
+      "description": "The domain name of the library.",
+      "x-prompt": "What is the domain name?"
+    },
+    "directory": {
+      "type": "string",
+      "description": "A directory where the library is placed inside the domain directory."
+    },
+    "libraryName": {
+      "type": "string",
+      "description": "The name of the library."
+    },
+    "withoutLibraryTypePrefix": {
+      "type": "boolean",
+      "description": "Create the library inside library type directory `<domainName>/<libraryType>-<libraryName>` to `<domainName>/<libraryType>/<libraryName>`.",
+      "default": false
+    },
+    "prefix": {
+      "type": "string",
+      "description": "The prefix to apply to generated selectors."
+    },
+    "style": {
+      "type": "string",
+      "enum": ["css", "scss", "sass", "less", "none"],
+      "description": "The file extension or preprocessor to use for style files, or 'none' to skip generating the style file.",
+      "default": "scss"
+    },
+    "flat": {
+      "type": "boolean",
+      "description": "Create new files at the top level of the current project.",
+      "default": false
+    },
+    "standaloneConfig": {
+      "type": "boolean",
+      "description": "Split the project configuration into `<projectRoot>/project.json` rather than including it inside `workspace.json`.",
+      "default": false
+    }
+  },
+  "required": ["libraryType", "domainName"]
+}

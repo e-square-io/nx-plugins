@@ -6,7 +6,12 @@
     "init": {
       "factory": "./src/generators/init/generator",
       "schema": "./src/generators/init/schema.json",
-      "description": "Add eslint rules for enforce-module-boundaries"
+      "description": "Add ESLint rules for enforce-module-boundaries"
+    },
+    "angular": {
+      "factory": "./src/generators/angular/generator",
+      "schema": "./src/generators/angular/schema.json",
+      "description": "Create an Angular ddd library"
     }
   }
 }
