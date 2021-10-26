@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'nx-ddd',
+  displayName: 'ddd',
   preset: '../../jest.preset.js',
   globals: {
     'ts-jest': {

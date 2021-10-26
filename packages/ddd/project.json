@@ -1,19 +1,19 @@
 {
-  "root": "packages/nx-ddd",
-  "sourceRoot": "packages/nx-ddd/src",
+  "root": "packages/ddd",
+  "sourceRoot": "packages/ddd/src",
   "projectType": "library",
   "targets": {
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["packages/nx-ddd/**/*.ts"]
+        "lintFilePatterns": ["packages/ddd/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/nx-ddd"],
+      "outputs": ["coverage/packages/ddd"],
       "options": {
-        "jestConfig": "packages/nx-ddd/jest.config.js",
+        "jestConfig": "packages/ddd/jest.config.js",
         "passWithNoTests": true
       }
     },
@@ -21,29 +21,29 @@
       "executor": "@nrwl/node:package",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/packages/nx-ddd",
-        "tsConfig": "packages/nx-ddd/tsconfig.lib.json",
-        "packageJson": "packages/nx-ddd/package.json",
-        "main": "packages/nx-ddd/src/index.ts",
+        "outputPath": "dist/packages/ddd",
+        "tsConfig": "packages/ddd/tsconfig.lib.json",
+        "packageJson": "packages/ddd/package.json",
+        "main": "packages/ddd/src/index.ts",
         "assets": [
-          "packages/nx-ddd/*.md",
+          "packages/ddd/*.md",
           {
-            "input": "./packages/nx-ddd/src",
+            "input": "./packages/ddd/src",
             "glob": "**/!(*.ts)",
             "output": "./src"
           },
           {
-            "input": "./packages/nx-ddd/src",
+            "input": "./packages/ddd/src",
             "glob": "**/*.d.ts",
             "output": "./src"
           },
           {
-            "input": "./packages/nx-ddd",
+            "input": "./packages/ddd",
             "glob": "generators.json",
             "output": "."
           },
           {
-            "input": "./packages/nx-ddd",
+            "input": "./packages/ddd",
             "glob": "executors.json",
             "output": "."
           }
