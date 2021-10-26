@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/schema",
   "cli": "nx",
-  "id": "react",
+  "$id": "react",
   "title": "Create a React ddd library",
   "type": "object",
   "properties": {

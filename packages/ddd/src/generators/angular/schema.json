@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/schema",
   "cli": "nx",
-  "id": "angular",
+  "$id": "angular",
   "title": "Create an Angular ddd library",
   "type": "object",
   "properties": {
