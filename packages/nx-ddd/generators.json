@@ -12,6 +12,11 @@
       "factory": "./src/generators/angular/generator",
       "schema": "./src/generators/angular/schema.json",
       "description": "Create an Angular ddd library"
+    },
+    "react": {
+      "factory": "./src/generators/react/generator",
+      "schema": "./src/generators/react/schema.json",
+      "description": "Create an React ddd library"
     }
   }
 }
