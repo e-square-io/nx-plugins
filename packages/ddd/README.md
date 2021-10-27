@@ -82,13 +82,17 @@ npm i -D @nrwl/react
 
 ## Basic Usage
 
+### Init
+
 Add ESLint rules for enforce-module-boundaries.
 
-This generator need to be to run only once.
+This generator need to be run only once.
 
 ```shell
 nx g @e-square/nx-ddd:init
 ```
+
+### Angular
 
 Create an Angular ddd library.
 
@@ -96,15 +100,29 @@ Create an Angular ddd library.
 nx g @e-square/nx-ddd:angular
 ```
 
+Create an Angular ddd feature library example.
+
+```shell
+nx g @e-square/nx-ddd:angular --libraryType feature --domainName blog --libraryName posts
+```
+
+### React
+
 Create a React ddd library.
 
 ```shell
 nx g @e-square/nx-ddd:react
 ```
 
+Create a React ddd feature library example.
+
+```shell
+nx g @e-square/nx-ddd:react --libraryType feature --domainName blog --libraryName posts
+```
+
 ## API
 
-### `@e-square/nx-ddd:angular` argument list.
+### `@e-square/nx-ddd:angular`
 
 | Argument                   | Type                                                          | Default       | Description                                                                                                                               |
 | -------------------------- | ------------------------------------------------------------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
@@ -118,7 +136,7 @@ nx g @e-square/nx-ddd:react
 | `flat`                     | boolean                                                       | false         | Create new files at the top level of the current project                                                                                  |
 | `standaloneConfig`         | boolean                                                       | false         | Split the project configuration into `<projectRoot>/project.json` rather than including it inside `workspace.json`                        |
 
-### `@e-square/nx-ddd:react` argument list.
+### `@e-square/nx-ddd:react`
 
 | Argument                   | Type                                                                                                                                  | Default       | Description                                                                                                                               |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
