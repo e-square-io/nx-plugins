@@ -1,23 +1,15 @@
-import { logger, readJsonFile, writeJsonFile } from '@nrwl/devkit';
-import { readWorkspaceConfig } from '@nrwl/workspace';
-import { createProjectGraph } from '@nrwl/workspace/src/core/project-graph';
-import { workspaceFileName } from '@nrwl/workspace/src/core/file-utils';
+import { logger, writeJsonFile } from '@nrwl/devkit';
+import { createProjectGraphAsync } from '@nrwl/workspace/src/core/project-graph';
 import { createPackageJson } from '@nrwl/workspace/src/utilities/create-package-json';
 import { basename } from 'path';
 import { NormalizedExecutorSchema } from './normalize';
 
-export function generatePackageJson(
+export async function generatePackageJson(
   projectName: string,
   options: NormalizedExecutorSchema & { outputPath: string }
-): void {
+): Promise<void> {
   try {
-    const graph = createProjectGraph(
-      readWorkspaceConfig({
-        path: `${options.root}`,
-        format: workspaceFileName() === 'workspace.json' ? 'nx' : 'angularCli',
-      }),
-      readJsonFile(`${options.root}/nx.json`)
-    );
+    const graph = await createProjectGraphAsync();
 
     const packageJson = createPackageJson(projectName, graph, options);
     packageJson.main = `./${basename(options.main, '.ts')}.js`;
