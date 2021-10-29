@@ -1,3 +1,9 @@
+## [1.0.9](https://github.com/e-square-io/nx-plugins/compare/v1.0.8...v1.0.9) (2021-10-29)
+
+### Build System
+
+- update packages (#8) ([a441902](https://github.com/e-square-io/nx-plugins/commit/a441902b92bcc0918426213cd082efc17ac61b9c)), closes [#8](https://github.com/e-square-io/nx-plugins/issues/8)
+
 ## [1.0.8](https://github.com/e-square-io/nx-plugins/compare/v1.0.7...v1.0.8) (2021-10-28)
 
 ### Build System
