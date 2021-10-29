@@ -16,10 +16,10 @@
     "baseUrl": ".",
     "paths": {
       "@e-square/nx-ddd": ["packages/ddd/src/index.ts"],
+      "@e-square/nx-ncc": ["packages/ncc/src/index.ts"],
       "@e-square/nx-semantic-release": [
         "packages/semantic-release/src/index.ts"
-      ],
-      "@e-square/nx-ncc": ["packages/ncc/src/index.ts"]
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

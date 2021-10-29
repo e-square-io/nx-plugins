@@ -7,8 +7,5 @@
     "ncc-e2e": "e2e/ncc-e2e",
     "semantic-release": "packages/semantic-release",
     "semantic-release-e2e": "e2e/semantic-release-e2e"
-  },
-  "cli": {
-    "defaultCollection": "@nrwl/workspace"
   }
 }
