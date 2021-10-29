@@ -135,4 +135,37 @@ describe('dddStructure', () => {
     expect(dddStructure.isUI).toBe(false);
     expect(dddStructure.isUtil).toBe(true);
   });
+
+  it('should be fallback in case of undefined', () => {
+    const dddStructure = new DDDStructure({
+      libraryType: undefined,
+      domainName: 'cool-stuff',
+      directory: '',
+      libraryName: 'smiles',
+      withoutLibraryTypePrefix: undefined,
+      flat: undefined,
+      standaloneConfig: undefined,
+    });
+
+    expect(dddStructure.libraryName).toBe('data-access-smiles');
+    expect(dddStructure.libraryDirectory).toBe('cool-stuff');
+    expect(dddStructure.libraryPrefix).toBe('cool-stuff');
+    expect(dddStructure.projectName).toBe('cool-stuff-data-access-smiles');
+    expect(dddStructure.domainName).toBe('cool-stuff');
+    expect(dddStructure.libraryType).toBe(DDDLibraryType.DataAccess);
+    expect(dddStructure.librarySimpleName).toBe('smiles');
+    expect(dddStructure.flat).toBe(false);
+    expect(dddStructure.standaloneConfig).toBe(false);
+    expect(dddStructure.tags).toBe('scope:cool-stuff,type:data-access');
+    expect(dddStructure.depConstraints).toStrictEqual([
+      {
+        sourceTag: 'scope:cool-stuff',
+        onlyDependOnLibsWithTags: ['scope:cool-stuff', 'scope:shared'],
+      },
+    ]);
+    expect(dddStructure.isDataAccess).toBe(true);
+    expect(dddStructure.isFeature).toBe(false);
+    expect(dddStructure.isUI).toBe(false);
+    expect(dddStructure.isUtil).toBe(false);
+  });
 });

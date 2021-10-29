@@ -1,5 +1,5 @@
 import { libraryGenerator } from '@nrwl/angular/generators';
-import { formatFiles, installPackagesTask, Tree } from '@nrwl/devkit';
+import { formatFiles, Tree } from '@nrwl/devkit';
 
 import { DDDStructure } from '../../ddd';
 import {
@@ -11,7 +11,10 @@ import {
 import { createLibraryDataAccessFiles } from './create-library-data-access-files';
 import { AngularGeneratorSchema } from './schema';
 
-export default async (tree: Tree, schema: AngularGeneratorSchema) => {
+export default async (
+  tree: Tree,
+  schema: AngularGeneratorSchema
+): Promise<void> => {
   const dddStructure = new DDDStructure(schema);
 
   validateProjectBeforeCreation(tree, dddStructure.projectName);
@@ -35,7 +38,7 @@ export default async (tree: Tree, schema: AngularGeneratorSchema) => {
     await createAngularComponent(tree, {
       name: dddStructure.librarySimpleName,
       project: dddStructure.projectName,
-      style: schema.style || 'scss',
+      style: schema.style,
       export: dddStructure.isUI,
       flat: dddStructure.flat,
       prefix: dddStructure.libraryPrefix,
@@ -51,7 +54,4 @@ export default async (tree: Tree, schema: AngularGeneratorSchema) => {
   }
 
   await formatFiles(tree);
-  return () => {
-    installPackagesTask(tree);
-  };
 };

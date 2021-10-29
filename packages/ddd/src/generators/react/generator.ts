@@ -1,4 +1,4 @@
-import { formatFiles, installPackagesTask, Tree } from '@nrwl/devkit';
+import { formatFiles, Tree } from '@nrwl/devkit';
 import { Linter } from '@nrwl/linter';
 import { libraryGenerator } from '@nrwl/react';
 
@@ -14,21 +14,19 @@ import { ReactGeneratorSchema } from './schema';
 export default async (
   tree: Tree,
   schema: ReactGeneratorSchema
-): Promise<() => void> => {
+): Promise<void> => {
   const dddStructure = new DDDStructure(schema);
 
   validateProjectBeforeCreation(tree, dddStructure.projectName);
 
-  const style = schema.style || 'scss';
-
   const libraryGeneratorSchema = {
     name: dddStructure.libraryName,
     directory: dddStructure.libraryDirectory,
-    style,
+    style: schema.style,
     skipTsConfig: false,
     skipFormat: false,
     tags: dddStructure.tags,
-    pascalCaseFiles: schema.pascalCaseFiles ?? false,
+    pascalCaseFiles: schema.pascalCaseFiles,
     routing: dddStructure.isFeature,
     unitTestRunner: 'jest' as const,
     linter: Linter.EsLint,
@@ -43,11 +41,11 @@ export default async (
     await createReactComponent(tree, {
       name: dddStructure.librarySimpleName,
       project: dddStructure.projectName,
-      style,
+      style: schema.style,
       export: dddStructure.isUI,
-      pascalCaseFiles: schema.pascalCaseFiles ?? false,
-      pascalCaseDirectory: schema.pascalCaseDirectory ?? false,
-      classComponent: schema.classComponent ?? false,
+      pascalCaseFiles: schema.pascalCaseFiles,
+      pascalCaseDirectory: schema.pascalCaseDirectory,
+      classComponent: schema.classComponent,
       flat: dddStructure.flat,
     });
   }
@@ -57,7 +55,4 @@ export default async (
   }
 
   await formatFiles(tree);
-  return () => {
-    installPackagesTask(tree);
-  };
 };
