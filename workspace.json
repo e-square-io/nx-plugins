@@ -1,14 +1,11 @@
 {
   "version": 2,
   "projects": {
-    "ncc": "packages/ncc",
-    "ncc-e2e": "e2e/ncc-e2e",
     "ddd": "packages/ddd",
     "ddd-e2e": "e2e/ddd-e2e",
+    "ncc": "packages/ncc",
+    "ncc-e2e": "e2e/ncc-e2e",
     "semantic-release": "packages/semantic-release",
     "semantic-release-e2e": "e2e/semantic-release-e2e"
-  },
-  "cli": {
-    "defaultCollection": "@nrwl/workspace"
   }
 }

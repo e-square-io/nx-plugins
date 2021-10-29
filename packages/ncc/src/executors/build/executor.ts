@@ -26,7 +26,7 @@ export default async function* runExecutor(
           assetGlobsToFiles(opts.assets, opts.root, opts.outputPath)
         );
         if (opts.generatePackageJson)
-          generatePackageJson(context.projectName, opts);
+          await generatePackageJson(context.projectName, opts);
       }
       yield { success };
     }

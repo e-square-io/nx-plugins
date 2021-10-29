@@ -10,7 +10,7 @@ describe('react generator', () => {
   let options: ReactGeneratorSchema;
 
   beforeEach(() => {
-    appTree = createTreeWithEmptyWorkspace();
+    appTree = createTreeWithEmptyWorkspace(2);
   });
 
   it('should create data-access library', async () => {

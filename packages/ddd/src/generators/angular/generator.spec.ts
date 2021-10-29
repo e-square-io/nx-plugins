@@ -10,7 +10,7 @@ describe('angular generator', () => {
   let options: AngularGeneratorSchema;
 
   beforeEach(() => {
-    appTree = createTreeWithEmptyWorkspace();
+    appTree = createTreeWithEmptyWorkspace(2);
   });
 
   it('should create data-access library', async () => {

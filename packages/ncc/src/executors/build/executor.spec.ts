@@ -32,6 +32,7 @@ describe('Build Executor', () => {
       cwd: process.cwd(),
       isVerbose: true,
       workspace: {
+        npmScope: '',
         version: 1,
         projects: {
           test: {

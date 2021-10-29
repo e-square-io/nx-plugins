@@ -3,16 +3,12 @@
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/e-square-io/nx-plugins/Main%20Workflow?style=flat-square)](https://github.com/e-square-io/nx-plugins/actions/workflows/main.yml)
 [![Codecov](https://img.shields.io/codecov/c/github/e-square-io/nx-plugins?logo=codecov&style=flat-square&token=JR0CGZBPQ5)](https://app.codecov.io/gh/e-square-io/nx-plugins)
 [![PRs](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](.github/PULL_REQUEST_TEMPLATE.md)
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![commitizen](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](./.github/CONTRIBUTING.md#commit-message-format)
 [![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg?style=flat-square)](LICENSE)
 
-A collection of plugins for [NX](https://nx.dev) workspace.
-
-## Plugins
-
-To get more information click on the plugin link.
+> A collection of plugins for [NX](https://nx.dev) workspaces.
 
 |             plugin              |                            version                            |                        description                         |
 | :-----------------------------: | :-----------------------------------------------------------: | :--------------------------------------------------------: |
@@ -42,7 +38,7 @@ To get more information click on the plugin link.
 
 ## Contributors ✨
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+Thanks go to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -50,7 +46,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://github.com/ronnetzer"><img src="https://avatars.githubusercontent.com/u/1116785?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ron Netzer</b></sub></a><br /><a href="https://github.com/ronnetzer/test/commits?author=ronnetzer" title="Code">💻</a> <a href="#content-ronnetzer" title="Content">🖋</a> <a href="https://github.com/ronnetzer/test/commits?author=ronnetzer" title="Documentation">📖</a> <a href="#example-ronnetzer" title="Examples">💡</a> <a href="#ideas-ronnetzer" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-ronnetzer" title="Maintenance">🚧</a> <a href="https://github.com/ronnetzer/test/commits?author=ronnetzer" title="Tests">⚠️</a></td>
-    <td align="center"><a href="https://github.com/avivharuzi"><img src="https://avatars.githubusercontent.com/u/29040832?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Aviv Haruzi</b></sub></a><br /><a href="https://github.com/ronnetzer/test/commits?author=avivharuzi" title="Code">💻</a> <a href="https://github.com/ronnetzer/test/commits?author=avivharuzi" title="Documentation">📖</a> <a href="#ideas-avivharuzi" title="Ideas, Planning, & Feedback">🤔</a> <a href="#infra-avivharuzi" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-avivharuzi" title="Maintenance">🚧</a> <a href="#tool-avivharuzi" title="Tools">🔧</a></td>
+    <td align="center"><a href="https://github.com/avivharuzi"><img src="https://avatars.githubusercontent.com/u/29040832?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Aviv Haruzi</b></sub></a><br /><a href="https://github.com/ronnetzer/test/commits?author=avivharuzi" title="Code">💻</a> <a href="https://github.com/ronnetzer/test/commits?author=avivharuzi" title="Documentation">📖</a> <a href="#ideas-avivharuzi" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-avivharuzi" title="Maintenance">🚧</a> <a href="https://github.com/ronnetzer/test/commits?author=avivharuzi" title="Tests">⚠️</a></td>
   </tr>
 </table>
 

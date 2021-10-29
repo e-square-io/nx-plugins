@@ -1,6 +1,6 @@
 {
   "name": "nx-plugins",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "license": "MIT",
   "scripts": {
     "nx": "nx",
@@ -29,46 +29,44 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@angular-devkit/schematics": "^12.1.1",
-    "@nrwl/devkit": "12.5.4",
-    "@nrwl/workspace": "^12.5.4",
-    "@vercel/ncc": "^0.28.6",
-    "rxjs": "^7.1.0",
+    "@angular-devkit/schematics": "^12.2.12",
+    "@nrwl/angular": "13.1.2",
+    "@nrwl/devkit": "13.1.2",
+    "@nrwl/react": "13.1.2",
+    "@nrwl/workspace": "13.1.2",
+    "@vercel/ncc": "0.31.1",
+    "rxjs": "^7.4.0",
     "rxjs-for-await": "0.0.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-angular": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
-    "@nrwl/angular": "^12.5.4",
-    "@nrwl/cli": "^12.5.4",
-    "@nrwl/devkit": "12.5.4",
-    "@nrwl/eslint-plugin-nx": "^12.5.4",
-    "@nrwl/jest": "^12.5.4",
-    "@nrwl/linter": "^12.5.4",
-    "@nrwl/node": "12.5.4",
-    "@nrwl/nx-cloud": "^12.2.7",
-    "@nrwl/nx-plugin": "^12.5.4",
-    "@nrwl/react": "^12.5.4",
-    "@nrwl/tao": "^12.5.4",
-    "@types/jest": "26.0.23",
+    "@nrwl/cli": "13.1.2",
+    "@nrwl/eslint-plugin-nx": "13.1.2",
+    "@nrwl/jest": "13.1.2",
+    "@nrwl/linter": "13.1.2",
+    "@nrwl/node": "13.1.2",
+    "@nrwl/nx-cloud": "12.5.1",
+    "@nrwl/nx-plugin": "13.1.2",
+    "@nrwl/tao": "13.1.2",
+    "@types/jest": "27.0.2",
     "@types/node": "14.14.33",
-    "@typescript-eslint/eslint-plugin": "4.19.0",
-    "@typescript-eslint/parser": "4.19.0",
+    "@typescript-eslint/eslint-plugin": "4.33.0",
+    "@typescript-eslint/parser": "4.33.0",
     "all-contributors-cli": "^6.20.0",
     "cross-env": "^7.0.3",
-    "dotenv": "8.2.0",
-    "eslint": "7.29.0",
+    "dotenv": "10.0.0",
+    "eslint": "7.32.0",
     "eslint-config-prettier": "8.3.0",
     "git-cz": "^4.7.6",
     "husky": "^7.0.0",
-    "jest": "27.0.6",
+    "jest": "27.2.3",
     "lint-staged": "^11.0.0",
     "prettier": "2.3.2",
-    "ts-jest": "27.0.3",
+    "ts-jest": "27.0.5",
     "ts-node": "~9.1.1",
-    "tslib": "^2.0.0",
-    "typescript": "4.1.4"
+    "typescript": "4.3.5"
   },
   "config": {
     "commitizen": {
@@ -76,10 +74,10 @@
     }
   },
   "lint-staged": {
-    "*.{html,css,scss,js,ts,jsx,tsx,json,md}": [
+    "*.{js,json,css,scss,ts,html,component.html}": [
       "prettier --write"
     ],
-    "*.{js,ts,jsx,tsx}": [
+    "*.{js,ts}": [
       "eslint --fix"
     ]
   }

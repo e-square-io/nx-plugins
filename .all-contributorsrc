@@ -34,9 +34,8 @@
         "code",
         "doc",
         "ideas",
-        "infra",
         "maintenance",
-        "tool"
+        "test"
       ]
     }
   ],
