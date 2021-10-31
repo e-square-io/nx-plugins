@@ -21,7 +21,7 @@ export const updateEslintDepConstraints = (
         const rule = override.rules[ruleName];
         const ruleInnerObj = rule[1];
         if (!ruleInnerObj) {
-          throw new Error(`Found ${ruleName} but inner object doest not exits`);
+          throw new Error(`Found ${ruleName} but inner object doesn't exists`);
         }
         const depConstraintsWithoutDuplicates = filterDepConstraintsDuplicates(
           depConstraints,
@@ -43,7 +43,7 @@ export const getEslintFilePath = (): string => {
     fileExists(eslintFilePath)
   );
   if (!eslintFilePath) {
-    throw new Error('Not found eslint file');
+    throw new Error(`Couldn't find eslint file`);
   }
   return eslintFilePath;
 };
