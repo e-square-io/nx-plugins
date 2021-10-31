@@ -66,6 +66,12 @@
       "description": "Create new files at the top level of the current project.",
       "default": false
     },
+    "changeDetection": {
+      "type": "string",
+      "enum": ["Default", "OnPush"],
+      "description": "The change detection strategy to use in the new component.",
+      "default": "OnPush"
+    },
     "standaloneConfig": {
       "type": "boolean",
       "description": "Split the project configuration into `<projectRoot>/project.json` rather than including it inside `workspace.json`.",

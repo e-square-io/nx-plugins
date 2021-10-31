@@ -134,6 +134,7 @@ nx g @e-square/nx-ddd:react --libraryType feature --domainName blog --libraryNam
 | `prefix`                   | string                                                        | ''            | The prefix to apply to generated selectors                                                                                                |
 | `style`                    | 'css' &#124; 'scss' &#124; 'sass' &#124; 'less' &#124; 'none' | 'scss'        | The file extension or preprocessor to use for style files, or 'none' to skip generating the style file                                    |
 | `flat`                     | boolean                                                       | false         | Create new files at the top level of the current project                                                                                  |
+| `changeDetection`          | 'Default' &#124; 'OnPush'                                     | 'OnPush'      | The change detection strategy to use in the new component                                                                                 |
 | `standaloneConfig`         | boolean                                                       | false         | Split the project configuration into `<projectRoot>/project.json` rather than including it inside `workspace.json`                        |
 
 ### `@e-square/nx-ddd:react`

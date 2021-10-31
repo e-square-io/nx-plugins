@@ -42,6 +42,7 @@ export default async (
       export: dddStructure.isUI,
       flat: dddStructure.flat,
       prefix: dddStructure.libraryPrefix,
+      changeDetection: schema.changeDetection,
     });
   }
 

@@ -8,6 +8,7 @@ export interface createAngularComponentOptions {
   export: boolean;
   flat: boolean;
   prefix: string;
+  changeDetection: string;
 }
 
 export const createAngularComponent = async (
@@ -18,8 +19,5 @@ export const createAngularComponent = async (
     '@nrwl/angular',
     'component'
   );
-  await libraryGenerator(tree, {
-    changeDetection: 'OnPush',
-    ...options,
-  });
+  await libraryGenerator(tree, options);
 };
