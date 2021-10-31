@@ -24,6 +24,7 @@ describe('angular generator', () => {
       flat: false,
       standaloneConfig: false,
       style: 'scss',
+      changeDetection: 'OnPush',
     };
     await generator(appTree, options);
     const config = readProjectConfiguration(appTree, 'test-data-access');
@@ -42,6 +43,7 @@ describe('angular generator', () => {
       flat: true,
       standaloneConfig: true,
       style: 'scss',
+      changeDetection: 'Default',
     };
     await generator(appTree, options);
     const config = readProjectConfiguration(appTree, 'blog-auth-feature-home');
@@ -60,6 +62,7 @@ describe('angular generator', () => {
       flat: true,
       standaloneConfig: true,
       style: 'scss',
+      changeDetection: 'OnPush',
     };
     await generator(appTree, options);
     const config = readProjectConfiguration(appTree, 'shared-ui-button');
@@ -78,6 +81,7 @@ describe('angular generator', () => {
       flat: true,
       standaloneConfig: false,
       style: 'scss',
+      changeDetection: 'Default',
     };
     await generator(appTree, options);
     const config = readProjectConfiguration(appTree, 'shared-util-validators');
