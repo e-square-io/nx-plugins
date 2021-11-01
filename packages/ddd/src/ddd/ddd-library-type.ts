@@ -1,4 +1,4 @@
-export enum DDDLibraryType {
+export const enum DDDLibraryType {
   DataAccess = 'data-access',
   Feature = 'feature',
   UI = 'ui',
