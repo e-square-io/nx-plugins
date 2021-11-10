@@ -7,5 +7,6 @@ export const createAngularComponentStories = async (
 ): Promise<void> => {
   await angularStoriesGenerator(tree, {
     name: project,
+    generateCypressSpecs: false,
   });
 };
