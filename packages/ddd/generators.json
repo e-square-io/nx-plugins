@@ -6,17 +6,12 @@
     "init": {
       "factory": "./src/generators/init/generator",
       "schema": "./src/generators/init/schema.json",
-      "description": "Add ESLint rules for enforce-module-boundaries"
+      "description": "Configure global options and ESLint rules"
     },
-    "angular": {
-      "factory": "./src/generators/angular/generator",
-      "schema": "./src/generators/angular/schema.json",
-      "description": "Create an Angular ddd library"
-    },
-    "react": {
-      "factory": "./src/generators/react/generator",
-      "schema": "./src/generators/react/schema.json",
-      "description": "Create a React ddd library"
+    "library": {
+      "factory": "./src/generators/library/generator",
+      "schema": "./src/generators/library/schema.json",
+      "description": "Create a DDD library"
     }
   }
 }
