@@ -5,7 +5,7 @@
 
 Enforces domain-driven design development.
 
-Works with `Angular` and `React` libraries!
+✅ Support [Angular](https://angular.io) and [React](https://reactjs.org)
 
 ## Table of Contents
 
@@ -13,7 +13,7 @@ Works with `Angular` and `React` libraries!
 1. [Overview](#overview)
 1. [Type of Libraries](#types-of-libraries)
 1. [Installation](#installation)
-1. [Basic Usage](#basic-usage)
+1. [Usage](#usage)
 1. [API](#api)
 1. [License](#license)
 
@@ -64,95 +64,50 @@ A utility library contains low-level utilities used by many libraries and applic
 
 ```shell
 npm i -D @e-square/nx-ddd
-```
 
-If you are you going to use Angular libraries.
-
-```shell
-npm i -D @nrwl/angular
-```
-
-If you are you going to use React libraries.
-
-```shell
-npm i -D @nrwl/react
-```
-
-**NOTE**: If you are going to use storybook you need to create storybook configuration for the component stories, check out this [video](https://www.youtube.com/watch?v=sFpqyjT7u4s&ab_channel=Nrwl-NarwhalTechnologiesInc.).
-
-## Basic Usage
-
-### Init
-
-Add ESLint rules for enforce-module-boundaries.
-
-This generator need to be run only once.
-
-```shell
 nx g @e-square/nx-ddd:init
 ```
 
-### Angular
-
-Create an Angular ddd library.
+OR
 
 ```shell
-nx g @e-square/nx-ddd:angular
+ng add @e-square/nx-ddd
+```
+
+## Usage
+
+### Create a DDD Library
+
+```shell
+nx g @e-square/nx-ddd:library
 ```
 
 Create an Angular ddd feature library example.
 
 ```shell
-nx g @e-square/nx-ddd:angular --libraryType feature --domainName blog --libraryName posts
-```
-
-### React
-
-Create a React ddd library.
-
-```shell
-nx g @e-square/nx-ddd:react
+nx g @e-square/nx-ddd:library posts --framework angular --type feature --domain blog
 ```
 
 Create a React ddd feature library example.
 
 ```shell
-nx g @e-square/nx-ddd:react --libraryType feature --domainName blog --libraryName posts
+nx g @e-square/nx-ddd:library posts --framework react --type feature --domain blog
 ```
 
 ## API
 
-### `@e-square/nx-ddd:angular`
+### `@e-square/nx-ddd:library`
 
-| Argument                   | Type                                                          | Default       | Description                                                                                                                               |
-| -------------------------- | ------------------------------------------------------------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `libraryType`              | 'feature' &#124; 'ui' &#124; 'data-access' &#124; 'util'      | 'data-access' | The library type                                                                                                                          |
-| `domainName`               | string                                                        | ''            | The domain name of the library                                                                                                            |
-| `directory`                | string                                                        | ''            | A directory where the library is placed inside the domain directory                                                                       |
-| `libraryName`              | string                                                        | ''            | The name of the library                                                                                                                   |
-| `withoutLibraryTypePrefix` | boolean                                                       | false         | Create the library inside library type directory `<domainName>/<libraryType>-<libraryName>` to `<domainName>/<libraryType>/<libraryName>` |
-| `prefix`                   | string                                                        | ''            | The prefix to apply to generated selectors                                                                                                |
-| `style`                    | 'css' &#124; 'scss' &#124; 'sass' &#124; 'less' &#124; 'none' | 'scss'        | The file extension or preprocessor to use for style files, or 'none' to skip generating the style file                                    |
-| `flat`                     | boolean                                                       | false         | Create new files at the top level of the current project                                                                                  |
-| `changeDetection`          | 'Default' &#124; 'OnPush'                                     | 'OnPush'      | The change detection strategy to use in the new component                                                                                 |
-| `standaloneConfig`         | boolean                                                       | false         | Split the project configuration into `<projectRoot>/project.json` rather than including it inside `workspace.json`                        |
-
-### `@e-square/nx-ddd:react`
-
-| Argument                   | Type                                                                                                                                  | Default       | Description                                                                                                                               |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `libraryType`              | 'feature' &#124; 'ui' &#124; 'data-access' &#124; 'util'                                                                              | 'data-access' | The library type                                                                                                                          |
-| `domainName`               | string                                                                                                                                | ''            | The domain name of the library                                                                                                            |
-| `directory`                | string                                                                                                                                | ''            | A directory where the library is placed inside the domain directory                                                                       |
-| `libraryName`              | string                                                                                                                                | ''            | The name of the library                                                                                                                   |
-| `withoutLibraryTypePrefix` | boolean                                                                                                                               | false         | Create the library inside library type directory `<domainName>/<libraryType>-<libraryName>` to `<domainName>/<libraryType>/<libraryName>` |
-| `style`                    | 'css' &#124; 'scss' &#124; 'styl' &#124; 'less' &#124; 'styled-components' &#124; '@emotion/styled' &#124; 'styled-jsx' &#124; 'none' | 'scss'        | The file extension to be used for style files                                                                                             |
-| `flat`                     | boolean                                                                                                                               | false         | Create new files at the top level of the current project                                                                                  |
-| `pascalCaseFiles`          | boolean                                                                                                                               | false         | Use pascal case component file name (e.g. App.tsx)                                                                                        |
-| `pascalCaseDirectory`      | boolean                                                                                                                               | false         | Use pascal case directory name (e.g. App/App.tsx)                                                                                         |
-| `classComponent`           | boolean                                                                                                                               | false         | Use class components instead of functional component                                                                                      |
-| `standaloneConfig`         | boolean                                                                                                                               | false         | Split the project configuration into `<projectRoot>/project.json` rather than including it inside `workspace.json`                        |
+| Argument            | Type                                                     | Default       | Description                                                                                                                               |
+|---------------------|----------------------------------------------------------|---------------|-------------------------------------------------------------------------------------------------------------------------------------------|
+| `framework`         | 'angular' &#124; 'react'                                 | ''            | The framework to be used for library generation                                                                                           |
+| `type`              | 'feature' &#124; 'ui' &#124; 'data-access' &#124; 'util' | 'data-access' | The library type                                                                                                                          |
+| `name`              | string                                                   | ''            | The name of the library                                                                                                                   |
+| `domain`            | string                                                   | ''            | The domain name of the library                                                                                                            |
+| `directory`         | string                                                   | ''            | A directory where the library is placed inside the domain directory                                                                       |
+| `withoutTypePrefix` | boolean                                                  | false         | Create the library inside library type directory `<domainName>/<libraryType>-<libraryName>` to `<domainName>/<libraryType>/<libraryName>` |
+| `standaloneConfig`  | boolean                                                  | false         | Split the project configuration into `<projectRoot>/project.json` rather than including it inside `workspace.json`                        |
 
 # License
 
-[MIT](LICENSE)
+[MIT](../../LICENSE)
