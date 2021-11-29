@@ -5,4 +5,5 @@ export * from './create-react-component-stories';
 export * from './get-project-source-root';
 export * from './is-project-already-exists';
 export * from './update-eslint-dep-constraints';
+export * from './update-workspace-configuration-generators';
 export * from './validate-project-before-creation';
