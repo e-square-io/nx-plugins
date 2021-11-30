@@ -8,7 +8,7 @@ import {
 } from './ddd-library';
 
 export const normalizeDDDLibrary = (
-  dddLibrary: Partial<DDDLibrary>
+  dddLibrary: Partial<DDDLibrary> = {}
 ): DDDLibrary => {
   if (!dddLibrary.framework) {
     throw new Error('framework property is required!');

@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/schema",
   "cli": "nx",
   "$id": "init",
-  "title": "Add ESLint rules for enforce-module-boundaries",
+  "title": "Configure global options and ESLint rules",
   "type": "object",
   "properties": {}
 }

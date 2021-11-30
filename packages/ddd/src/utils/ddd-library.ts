@@ -46,6 +46,12 @@ export interface DDDLibraryGlobalConfiguration {
   [DDDLibraryFramework.React]: DDDLibraryReact;
 }
 
+export interface DDDLibraryGlobalConfigurationGenerators {
+  '@e-square/nx-ddd': {
+    library: DDDLibraryGlobalConfiguration;
+  };
+}
+
 export const DEFAULT_DDD_LIBRARY: Pick<
   DDDLibrary,
   'name' | 'directory' | 'withoutTypePrefix' | 'standaloneConfig'

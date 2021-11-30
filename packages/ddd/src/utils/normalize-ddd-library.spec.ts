@@ -3,7 +3,7 @@ import { normalizeDDDLibrary } from './normalize-ddd-library';
 
 describe('normalizeDDDLibrary', () => {
   it('should throw an error when framework property not provided', () => {
-    expect(() => normalizeDDDLibrary({})).toThrowError();
+    expect(() => normalizeDDDLibrary()).toThrowError();
   });
 
   it('should throw an error when domain property not provided', () => {

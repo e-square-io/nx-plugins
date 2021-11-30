@@ -14,7 +14,7 @@ describe('createDDDLibraryStructure', () => {
         withoutTypePrefix: false,
         standaloneConfig: false,
       },
-      normalizeDDDLibraryGlobalConfiguration({})
+      normalizeDDDLibraryGlobalConfiguration()
     );
 
     expect(dddLibraryStructure.framework).toBe(DDDLibraryFramework.Angular);
@@ -50,7 +50,7 @@ describe('createDDDLibraryStructure', () => {
         withoutTypePrefix: false,
         standaloneConfig: true,
       },
-      normalizeDDDLibraryGlobalConfiguration({})
+      normalizeDDDLibraryGlobalConfiguration()
     );
 
     expect(dddLibraryStructure.framework).toBe(DDDLibraryFramework.Angular);
@@ -86,7 +86,7 @@ describe('createDDDLibraryStructure', () => {
         withoutTypePrefix: true,
         standaloneConfig: true,
       },
-      normalizeDDDLibraryGlobalConfiguration({})
+      normalizeDDDLibraryGlobalConfiguration()
     );
 
     expect(dddLibraryStructure.framework).toBe(DDDLibraryFramework.Angular);
@@ -122,7 +122,7 @@ describe('createDDDLibraryStructure', () => {
         withoutTypePrefix: false,
         standaloneConfig: false,
       },
-      normalizeDDDLibraryGlobalConfiguration({})
+      normalizeDDDLibraryGlobalConfiguration()
     );
 
     expect(dddLibraryStructure.framework).toBe(DDDLibraryFramework.Angular);

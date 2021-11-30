@@ -10,7 +10,7 @@ import { normalizeDDDLibraryGlobalConfiguration } from './normalize-ddd-library-
 
 describe('normalizeDDDLibraryGlobalConfiguration', () => {
   it('should return default values on empty object', () => {
-    expect(normalizeDDDLibraryGlobalConfiguration({})).toEqual({
+    expect(normalizeDDDLibraryGlobalConfiguration()).toEqual({
       sharedDomain: DEFAULT_SHARED_DOMAIN,
       domainTagName: DEFAULT_DOMAIN_TAG_NAME,
       [DDDLibraryFramework.Angular]: {

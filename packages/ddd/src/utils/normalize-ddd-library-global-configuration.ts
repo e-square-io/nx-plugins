@@ -8,7 +8,7 @@ import {
 } from './ddd-library';
 
 export const normalizeDDDLibraryGlobalConfiguration = (
-  globalConfiguration: Partial<DDDLibraryGlobalConfiguration>
+  globalConfiguration: Partial<DDDLibraryGlobalConfiguration> = {}
 ): DDDLibraryGlobalConfiguration => {
   return {
     sharedDomain: globalConfiguration.sharedDomain || DEFAULT_SHARED_DOMAIN,
