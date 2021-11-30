@@ -8,7 +8,7 @@
     "framework": {
       "type": "string",
       "enum": ["angular", "react"],
-      "description": "The framework to use for the generated files.",
+      "description": "The framework to be used for library generation.",
       "x-prompt": {
         "message": "What framework would you like to use?",
         "type": "list",
@@ -23,20 +23,6 @@
           }
         ]
       }
-    },
-    "name": {
-      "type": "string",
-      "description": "The name of the library.",
-      "$default": {
-        "$source": "argv",
-        "index": 0
-      },
-      "x-prompt": "What is the name of the library?"
-    },
-    "domain": {
-      "type": "string",
-      "description": "The domain name of the library.",
-      "x-prompt": "What is the domain name?"
     },
     "type": {
       "type": "string",
@@ -63,21 +49,30 @@
             "label": "util"
           }
         ]
-      },
-      "default": "data-access"
+      }
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the library.",
+      "x-prompt": "What is the name of the library?",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    },
+    "domain": {
+      "type": "string",
+      "description": "The domain name of the library.",
+      "x-prompt": "What is the domain name?"
     },
     "directory": {
       "type": "string",
-      "description": "A directory where the library is placed inside the domain directory."
+      "description": "A directory where the library is placed inside the domain directory.",
+      "default": ""
     },
     "withoutTypePrefix": {
       "type": "boolean",
       "description": "Create the library inside library type directory `<domainName>/<libraryType>-<libraryName>` to `<domainName>/<libraryType>/<libraryName>`.",
-      "default": false
-    },
-    "flat": {
-      "type": "boolean",
-      "description": "Create new files at the top level of the current project.",
       "default": false
     },
     "standaloneConfig": {
@@ -86,5 +81,5 @@
       "default": false
     }
   },
-  "required": []
+  "required": ["framework", "type", "domain"]
 }

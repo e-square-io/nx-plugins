@@ -1,5 +1,3 @@
-export interface LibraryGeneratorSchema {
-  name: string;
-  tags?: string;
-  directory?: string;
-}
+import { DDDLibrary } from '../../utils';
+
+export type LibraryGeneratorSchema = Partial<DDDLibrary>;

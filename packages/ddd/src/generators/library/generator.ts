@@ -1,73 +1,59 @@
+import { formatFiles, Tree } from '@nrwl/devkit';
+
 import {
-  addProjectConfiguration,
-  formatFiles,
-  generateFiles,
-  getWorkspaceLayout,
-  names,
-  offsetFromRoot,
-  Tree,
-} from '@nrwl/devkit';
-import * as path from 'path';
+  createDDDLibraryStructure,
+  DDD_PACKAGE_NAME,
+  DDDLibraryFramework,
+  DDDLibraryGlobalConfigurationGenerators,
+  getWorkspaceConfigurationGenerator,
+  normalizeDDDLibrary,
+  normalizeDDDLibraryGlobalConfiguration,
+  updateEslintDepConstraints,
+  validateProjectBeforeCreation,
+} from '../../utils';
+import { createAngularGenerations } from './create-angular-generations';
+import { createReactGenerations } from './create-react-generations';
 import { LibraryGeneratorSchema } from './schema';
 
-interface NormalizedSchema extends LibraryGeneratorSchema {
-  projectName: string;
-  projectRoot: string;
-  projectDirectory: string;
-  parsedTags: string[];
-}
-
-function normalizeOptions(
+export default async (
   tree: Tree,
   options: LibraryGeneratorSchema
-): NormalizedSchema {
-  const name = names(options.name).fileName;
-  const projectDirectory = options.directory
-    ? `${names(options.directory).fileName}/${name}`
-    : name;
-  const projectName = projectDirectory.replace(new RegExp('/', 'g'), '-');
-  const projectRoot = `${getWorkspaceLayout(tree).libsDir}/${projectDirectory}`;
-  const parsedTags = options.tags
-    ? options.tags.split(',').map((s) => s.trim())
-    : [];
-
-  return {
-    ...options,
-    projectName,
-    projectRoot,
-    projectDirectory,
-    parsedTags,
-  };
-}
-
-function addFiles(tree: Tree, options: NormalizedSchema) {
-  const templateOptions = {
-    ...options,
-    ...names(options.name),
-    offsetFromRoot: offsetFromRoot(options.projectRoot),
-    template: '',
-  };
-  generateFiles(
-    tree,
-    path.join(__dirname, 'files'),
-    options.projectRoot,
-    templateOptions
+): Promise<void> => {
+  const workspaceConfigurationGenerator = getWorkspaceConfigurationGenerator<
+    DDDLibraryGlobalConfigurationGenerators[typeof DDD_PACKAGE_NAME]
+  >(tree, DDD_PACKAGE_NAME);
+  const globalConfiguration = normalizeDDDLibraryGlobalConfiguration(
+    workspaceConfigurationGenerator?.library || {}
   );
-}
 
-export default async function (tree: Tree, options: LibraryGeneratorSchema) {
-  const normalizedOptions = normalizeOptions(tree, options);
-  addProjectConfiguration(tree, normalizedOptions.projectName, {
-    root: normalizedOptions.projectRoot,
-    projectType: 'library',
-    sourceRoot: `${normalizedOptions.projectRoot}/src`,
-    targets: {
-      build: {
-        executor: '@e-square/ddd:build',
-      },
-    },
-    tags: normalizedOptions.parsedTags,
-  });
-  addFiles(tree, normalizedOptions);
+  const dddLibrary = normalizeDDDLibrary(options);
+  const dddLibraryStructure = createDDDLibraryStructure(
+    dddLibrary,
+    globalConfiguration
+  );
+
+  validateProjectBeforeCreation(tree, dddLibraryStructure.project);
+
+  switch (dddLibraryStructure.framework) {
+    case DDDLibraryFramework.Angular:
+      await createAngularGenerations(tree, {
+        dddLibraryStructure,
+        dddLibraryAngular: globalConfiguration[DDDLibraryFramework.Angular],
+      });
+      break;
+    case DDDLibraryFramework.React:
+      await createReactGenerations(tree, {
+        dddLibraryStructure,
+        dddLibraryReact: globalConfiguration[DDDLibraryFramework.React],
+      });
+      break;
+    default:
+      throw new Error(
+        `${dddLibraryStructure.framework} framework is not supported!`
+      );
+  }
+
+  await updateEslintDepConstraints(tree, dddLibraryStructure.depConstraints);
+
   await formatFiles(tree);
-}
+};
