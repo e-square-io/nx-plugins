@@ -23,9 +23,5 @@
   {
     "sourceTag": "type:util",
     "onlyDependOnLibsWithTags": ["type:util"]
-  },
-  {
-    "sourceTag": "scope:shared",
-    "onlyDependOnLibsWithTags": ["scope:shared"]
   }
 ]

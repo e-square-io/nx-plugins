@@ -1,8 +1,0 @@
-{
-  "@e-square/nx-ddd": {
-    "library": {
-      "sharedDomain": "shared",
-      "domainTagName": "scope"
-    }
-  }
-}
