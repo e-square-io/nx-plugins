@@ -1,1 +1,3 @@
-export * from './generator';
+import dddInitGenerator from './generator';
+
+export { dddInitGenerator };
