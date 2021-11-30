@@ -1,5 +1,7 @@
 import { SupportedStyles } from '@nrwl/react';
 
+import { DDD_PACKAGE_NAME } from './ddd-pacakge-name';
+
 export enum DDDLibraryFramework {
   Angular = 'angular',
   React = 'react',
@@ -47,7 +49,7 @@ export interface DDDLibraryGlobalConfiguration {
 }
 
 export interface DDDLibraryGlobalConfigurationGenerators {
-  '@e-square/nx-ddd': {
+  [DDD_PACKAGE_NAME]: {
     library: DDDLibraryGlobalConfiguration;
   };
 }
