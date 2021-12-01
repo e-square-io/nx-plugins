@@ -6,10 +6,26 @@
     "init": {
       "factory": "./src/generators/init/generator",
       "schema": "./src/generators/init/schema.json",
-      "description": "Configure global options and ESLint rules"
+      "description": "Configure global options and ESLint rules",
+      "aliases": ["ng-add"],
+      "hidden": true
     },
     "library": {
       "factory": "./src/generators/library/generator",
+      "schema": "./src/generators/library/schema.json",
+      "description": "Create a DDD library"
+    }
+  },
+  "schematics": {
+    "init": {
+      "factory": "./src/generators/init/schematic",
+      "schema": "./src/generators/init/schema.json",
+      "description": "Configure global options and ESLint rules",
+      "aliases": ["ng-add"],
+      "hidden": true
+    },
+    "library": {
+      "factory": "./src/generators/library/schematic",
       "schema": "./src/generators/library/schema.json",
       "description": "Create a DDD library"
     }
