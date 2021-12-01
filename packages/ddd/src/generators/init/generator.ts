@@ -12,14 +12,18 @@ import {
   updateEslintDepConstraints,
   updateWorkspaceConfigurationGenerators,
 } from '../../utils';
+import { InitGeneratorSchema } from './schema';
 
-export default async (tree: Tree): Promise<void> => {
+export default async (
+  tree: Tree,
+  options: InitGeneratorSchema
+): Promise<void> => {
   updateWorkspaceConfigurationGenerators<DDDLibraryGlobalConfigurationGenerators>(
     tree,
     {
       '@e-square/nx-ddd': {
         library: {
-          ...normalizeDDDLibraryGlobalConfiguration(),
+          ...normalizeDDDLibraryGlobalConfiguration(options),
         },
       },
     }
