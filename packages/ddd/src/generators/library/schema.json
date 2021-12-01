@@ -9,6 +9,7 @@
       "type": "string",
       "enum": ["angular", "react"],
       "description": "The framework to be used for library generation.",
+      "alias": "f",
       "x-prompt": {
         "message": "What framework would you like to use?",
         "type": "list",
@@ -28,6 +29,7 @@
       "type": "string",
       "enum": ["feature", "ui", "data-access", "util"],
       "description": "The library type.",
+      "alias": "t",
       "x-prompt": {
         "message": "What library type you are looking for?",
         "type": "list",
@@ -63,6 +65,7 @@
     "domain": {
       "type": "string",
       "description": "The domain the library belongs to.",
+      "alias": "d",
       "x-prompt": "What is the domain name?"
     },
     "directory": {
