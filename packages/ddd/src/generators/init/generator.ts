@@ -6,6 +6,7 @@ import {
 } from '@nrwl/devkit';
 
 import {
+  DDD_PACKAGE_NAME,
   DDDLibraryGlobalConfigurationGenerators,
   DepConstraint,
   normalizeDDDLibraryGlobalConfiguration,
@@ -21,7 +22,7 @@ export default async (
   updateWorkspaceConfigurationGenerators<DDDLibraryGlobalConfigurationGenerators>(
     tree,
     {
-      '@e-square/nx-ddd': {
+      [DDD_PACKAGE_NAME]: {
         library: {
           ...normalizeDDDLibraryGlobalConfiguration(options),
         },
