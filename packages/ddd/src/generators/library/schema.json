@@ -62,7 +62,7 @@
     },
     "domain": {
       "type": "string",
-      "description": "The domain name of the library.",
+      "description": "The domain the library belongs to.",
       "x-prompt": "What is the domain name?"
     },
     "directory": {

@@ -99,11 +99,11 @@ nx g @e-square/nx-ddd:library posts --framework react --type feature --domain bl
 ### `@e-square/nx-ddd:library`
 
 | Argument            | Type                                                     | Default       | Description                                                                                                                               |
-|---------------------|----------------------------------------------------------|---------------|-------------------------------------------------------------------------------------------------------------------------------------------|
+| ------------------- | -------------------------------------------------------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | `framework`         | 'angular' &#124; 'react'                                 | ''            | The framework to be used for library generation                                                                                           |
 | `type`              | 'feature' &#124; 'ui' &#124; 'data-access' &#124; 'util' | 'data-access' | The library type                                                                                                                          |
 | `name`              | string                                                   | ''            | The name of the library                                                                                                                   |
-| `domain`            | string                                                   | ''            | The domain name of the library                                                                                                            |
+| `domain`            | string                                                   | ''            | The domain the library belongs to                                                                                                         |
 | `directory`         | string                                                   | ''            | A directory where the library is placed inside the domain directory                                                                       |
 | `withoutTypePrefix` | boolean                                                  | false         | Create the library inside library type directory `<domainName>/<libraryType>-<libraryName>` to `<domainName>/<libraryType>/<libraryName>` |
 | `standaloneConfig`  | boolean                                                  | false         | Split the project configuration into `<projectRoot>/project.json` rather than including it inside `workspace.json`                        |
