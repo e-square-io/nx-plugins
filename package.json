@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@angular-devkit/schematics": "^12.2.12",
-    "@nrwl/devkit": "13.1.2",
+    "@nrwl/devkit": "13.1.4",
     "@nrwl/workspace": "13.1.2",
     "@vercel/ncc": "^0.31.1",
     "rxjs": "^7.4.0",
