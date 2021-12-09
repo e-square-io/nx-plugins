@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "cli": "nx",
+  "$id": "init",
+  "title": "Configure global options and ESLint rules",
+  "type": "object",
+  "properties": {
+    "sharedDomain": {
+      "type": "string",
+      "description": "The shared domain.",
+      "x-prompt": "What is the shared domain name you are going to use?",
+      "default": "shared"
+    },
+    "domainTagName": {
+      "type": "string",
+      "description": "The domain tag name.",
+      "x-prompt": "What is the domain tag name you are going to use?",
+      "default": "scope"
+    }
+  },
+  "required": []
+}

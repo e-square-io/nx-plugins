@@ -15,8 +15,7 @@
       "outputs": ["coverage/packages/ddd"],
       "options": {
         "jestConfig": "packages/ddd/jest.config.js",
-        "passWithNoTests": true,
-        "codeCoverage": true
+        "passWithNoTests": true
       }
     },
     "build": {
@@ -29,9 +28,15 @@
         "main": "packages/ddd/src/index.ts",
         "assets": [
           "packages/ddd/*.md",
+          "LICENSE",
           {
             "input": "./packages/ddd/src",
-            "glob": "**/*.!(ts)",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./packages/ddd/src",
+            "glob": "**/*.d.ts",
             "output": "./src"
           },
           {

@@ -30,9 +30,11 @@
   },
   "dependencies": {
     "@angular-devkit/schematics": "^12.2.12",
+    "@nrwl/angular": "13.1.2",
     "@nrwl/devkit": "13.1.2",
+    "@nrwl/react": "13.1.2",
     "@nrwl/workspace": "13.1.2",
-    "@vercel/ncc": "^0.31.1",
+    "@vercel/ncc": "0.31.1",
     "rxjs": "^7.4.0",
     "rxjs-for-await": "0.0.2"
   },

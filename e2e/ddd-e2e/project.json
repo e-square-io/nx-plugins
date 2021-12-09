@@ -1,6 +1,6 @@
 {
-  "projectType": "application",
   "root": "e2e/ddd-e2e",
+  "projectType": "application",
   "sourceRoot": "e2e/ddd-e2e/src",
   "targets": {
     "e2e": {

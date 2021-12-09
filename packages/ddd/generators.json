@@ -1,12 +1,33 @@
 {
-  "$schema": "http://json-schema.org/schema",
+  "$schema": "https://json-schema.org/schema",
   "name": "ddd",
   "version": "0.0.1",
   "generators": {
-    "ddd": {
-      "factory": "./src/generators/ddd/generator",
-      "schema": "./src/generators/ddd/schema.json",
-      "description": "ddd generator"
+    "init": {
+      "factory": "./src/generators/init/generator",
+      "schema": "./src/generators/init/schema.json",
+      "description": "Configure global options and ESLint rules",
+      "aliases": ["ng-add"],
+      "hidden": true
+    },
+    "library": {
+      "factory": "./src/generators/library/generator",
+      "schema": "./src/generators/library/schema.json",
+      "description": "Create a DDD library"
+    }
+  },
+  "schematics": {
+    "init": {
+      "factory": "./src/generators/init/schematic",
+      "schema": "./src/generators/init/schema.json",
+      "description": "Configure global options and ESLint rules",
+      "aliases": ["ng-add"],
+      "hidden": true
+    },
+    "library": {
+      "factory": "./src/generators/library/schematic",
+      "schema": "./src/generators/library/schema.json",
+      "description": "Create a DDD library"
     }
   }
 }
