@@ -1,18 +1,13 @@
-import {
-  formatFiles,
-  joinPathFragments,
-  readJsonFile,
-  Tree,
-} from '@nrwl/devkit';
+import { formatFiles, Tree } from '@nrwl/devkit';
 
 import {
   DDD_PACKAGE_NAME,
   DDDLibraryGlobalConfigurationGenerators,
-  DepConstraint,
   normalizeDDDLibraryGlobalConfiguration,
   updateEslintDepConstraints,
   updateWorkspaceConfigurationGenerators,
 } from '../../utils';
+import { DEFAULT_DEP_CONSTRAINTS } from './default-dep-constraints';
 import { InitGeneratorSchema } from './schema';
 
 export default async (
@@ -30,13 +25,7 @@ export default async (
     }
   );
 
-  const depConstraintsFilePath: string = joinPathFragments(
-    __dirname,
-    'data',
-    'dep-constraints.json'
-  );
-  const depConstraints: DepConstraint[] = readJsonFile(depConstraintsFilePath);
-  updateEslintDepConstraints(tree, depConstraints);
+  updateEslintDepConstraints(tree, DEFAULT_DEP_CONSTRAINTS);
 
   await formatFiles(tree);
 };
