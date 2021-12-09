@@ -30,6 +30,7 @@ export const createAngularGenerations = async (
     routing: dddLibraryStructure.isFeature,
     lazy: dddLibraryStructure.isFeature,
     tags: dddLibraryStructure.tags,
+    unitTestRunner: dddLibraryAngular.unitTestRunner,
   };
   await libraryGenerator(tree, libraryGeneratorSchema);
 

@@ -1,3 +1,4 @@
+import { UnitTestRunner as AngularUnitTestRunner } from '@nrwl/angular/src/utils/test-runners';
 import {
   DDDLibraryFramework,
   DDDLibraryGlobalConfiguration,
@@ -5,6 +6,7 @@ import {
   DEFAULT_DDD_LIBRARY_REACT,
   DEFAULT_DOMAIN_TAG_NAME,
   DEFAULT_SHARED_DOMAIN,
+  ReactUnitTestRunner,
 } from './ddd-library';
 import { normalizeDDDLibraryGlobalConfiguration } from './normalize-ddd-library-global-configuration';
 
@@ -32,6 +34,7 @@ describe('normalizeDDDLibraryGlobalConfiguration', () => {
         style: 'scss',
         changeDetection: 'OnPush',
         createStories: false,
+        unitTestRunner: AngularUnitTestRunner.Jest,
       },
       [DDDLibraryFramework.React]: {
         flat: false,
@@ -40,6 +43,7 @@ describe('normalizeDDDLibraryGlobalConfiguration', () => {
         pascalCaseDirectory: true,
         classComponent: true,
         createStories: true,
+        unitTestRunner: ReactUnitTestRunner.Jest,
       },
     };
     expect(normalizeDDDLibraryGlobalConfiguration(defaultValues)).toEqual(

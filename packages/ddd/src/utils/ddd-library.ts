@@ -1,3 +1,4 @@
+import { UnitTestRunner as AngularUnitTestRunner } from '@nrwl/angular/src/utils/test-runners';
 import { SupportedStyles } from '@nrwl/react';
 
 import { DDD_PACKAGE_NAME } from './ddd-pacakge-name';
@@ -30,6 +31,7 @@ export interface DDDLibraryAngular {
   style: string;
   changeDetection: string;
   createStories: boolean;
+  unitTestRunner: AngularUnitTestRunner;
 }
 
 export interface DDDLibraryReact {
@@ -39,6 +41,12 @@ export interface DDDLibraryReact {
   pascalCaseDirectory: boolean;
   classComponent: boolean;
   createStories: boolean;
+  unitTestRunner: ReactUnitTestRunner;
+}
+
+export const enum ReactUnitTestRunner {
+  Jest = 'jest',
+  None = 'none',
 }
 
 export interface DDDLibraryGlobalConfiguration {
@@ -73,6 +81,7 @@ export const DEFAULT_DDD_LIBRARY_ANGULAR: DDDLibraryAngular = {
   style: 'css',
   changeDetection: 'OnPush',
   createStories: false,
+  unitTestRunner: AngularUnitTestRunner.Jest,
 };
 
 export const DEFAULT_DDD_LIBRARY_REACT: DDDLibraryReact = {
@@ -82,4 +91,5 @@ export const DEFAULT_DDD_LIBRARY_REACT: DDDLibraryReact = {
   pascalCaseDirectory: false,
   classComponent: false,
   createStories: false,
+  unitTestRunner: ReactUnitTestRunner.Jest,
 };

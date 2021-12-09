@@ -28,7 +28,7 @@ export const createReactGenerations = async (
     tags: dddLibraryStructure.tags,
     pascalCaseFiles: dddLibraryReact.pascalCaseFiles,
     routing: dddLibraryStructure.isFeature,
-    unitTestRunner: 'jest' as const,
+    unitTestRunner: dddLibraryReact.unitTestRunner,
     linter: Linter.EsLint,
     standaloneConfig: dddLibraryStructure.standaloneConfig,
   };
