@@ -1,3 +1,9 @@
+# [1.1.0](https://github.com/e-square-io/nx-plugins/compare/v1.0.9...v1.1.0) (2021-12-09)
+
+### Features
+
+- **ddd:** create initial implementation ([48c4848](https://github.com/e-square-io/nx-plugins/commit/48c4848a7349bac46c662e8753b0e161956f96b0))
+
 ## [1.0.9](https://github.com/e-square-io/nx-plugins/compare/v1.0.8...v1.0.9) (2021-10-29)
 
 ### Build System
