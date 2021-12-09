@@ -7,7 +7,6 @@ import {
   DDDLibraryAngular,
   DDDLibraryStructure,
 } from '../../utils';
-import { createLibraryDataAccessFiles } from './create-library-data-access-files';
 
 export const createAngularGenerations = async (
   tree: Tree,
@@ -48,9 +47,5 @@ export const createAngularGenerations = async (
 
   if (dddLibraryStructure.isUI && dddLibraryAngular.createStories) {
     await createAngularComponentStories(tree, dddLibraryStructure.project);
-  }
-
-  if (dddLibraryStructure.isDataAccess) {
-    await createLibraryDataAccessFiles(tree, dddLibraryStructure.project);
   }
 };

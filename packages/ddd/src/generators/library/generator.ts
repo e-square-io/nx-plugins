@@ -12,6 +12,7 @@ import {
   validateProjectBeforeCreation,
 } from '../../utils';
 import { createAngularGenerations } from './create-angular-generations';
+import { createLibraryDataAccessFiles } from './create-library-data-access-files';
 import { createReactGenerations } from './create-react-generations';
 import { LibraryGeneratorSchema } from './schema';
 
@@ -51,6 +52,10 @@ export default async (
       throw new Error(
         `${dddLibraryStructure.framework} framework is not supported!`
       );
+  }
+
+  if (dddLibraryStructure.isDataAccess) {
+    await createLibraryDataAccessFiles(tree, dddLibraryStructure.project);
   }
 
   await updateEslintDepConstraints(tree, dddLibraryStructure.depConstraints);
