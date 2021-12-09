@@ -51,7 +51,7 @@ A UI library contains only presentational components (also called "dumb" compone
 
 A data-access library contains code for interacting with a back-end system. It also includes all the code related to state management.
 
-- `+state` - for state files
+- `state` - for state files
 - `application` - for facades
 - `entities` - for interfaces, enums
 - `infrastructure` - for services
