@@ -29,7 +29,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@angular-devkit/schematics": "^12.2.12",
+    "@angular-devkit/schematics": "^12.2.13",
     "@nrwl/angular": "13.1.2",
     "@nrwl/devkit": "13.1.2",
     "@nrwl/react": "13.1.2",
