@@ -55,6 +55,27 @@ nx g @e-square/nx-react-mfe:setup --remotes <app-name-1>,<app-name-2>
 nx g @e-square/nx-react-mfe:setup --host <app-name>
 ```
 
+### How To Import Remote Application Into Host Application
+
+> app.tsx
+
+```tsx
+import * as React from 'react';
+
+const Foo = React.lazy(() => import('foo/Component'));
+
+const App = () => {
+  return (
+    <div>
+      <h1>App</h1>
+      <React.Suspense fallback="">
+        <Foo />
+      </React.Suspense>
+    </div>
+  );
+};
+```
+
 ## API
 
 ### `@e-square/nx-react-mfe:setup`
@@ -69,4 +90,4 @@ nx g @e-square/nx-react-mfe:setup --host <app-name>
 
 # License
 
-[MIT](../../LICENSE)
+[MIT](https://github.com/e-square-io/nx-plugins/blob/main/LICENSE)

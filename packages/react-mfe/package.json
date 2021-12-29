@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/e-square-io/nx-plugins/issues"
   },
-  "homepage": "https://github.com/e-square-io/nx-plugins#readme"
+  "homepage": "https://github.com/e-square-io/nx-plugins#readme",
+  "peerDependencies": {
+    "@nrwl/react": "13.x"
+  }
 }
