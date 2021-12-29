@@ -74,6 +74,8 @@ const App = () => {
     </div>
   );
 };
+
+export default App;
 ```
 
 ### Run All Module Federation Applications
