@@ -41,14 +41,15 @@ export const addRemoteToHost = (
     { visitAllChildren: true }
   )[0] as ObjectLiteralExpression;
 
-  const endOfPropertiesPos = mfRemotesNode.properties.end;
-
-  const updatedConfig = `${hostWebpackConfig.slice(0, endOfPropertiesPos)}
+  const endOfPropertiesPos = mfRemotesNode?.properties?.end;
+  if (endOfPropertiesPos) {
+    const updatedConfig = `${hostWebpackConfig.slice(0, endOfPropertiesPos)}
     \t\t"${appName}": '${appName}@http://localhost:${
-    port ?? 4200
-  }/remoteEntry.js',${hostWebpackConfig.slice(endOfPropertiesPos)}`;
+      port ?? 4200
+    }/remoteEntry.js',${hostWebpackConfig.slice(endOfPropertiesPos)}`;
 
-  tree.write(selectedWebpackPath, updatedConfig);
+    tree.write(selectedWebpackPath, updatedConfig);
+  }
 
   const declarationFilePath = joinPathFragments(
     hostProject.sourceRoot || '',
