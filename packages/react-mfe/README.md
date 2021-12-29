@@ -62,18 +62,24 @@ nx g @e-square/nx-react-mfe:setup --host <app-name>
 ```tsx
 import * as React from 'react';
 
-const Foo = React.lazy(() => import('foo/Component'));
+const Bar = React.lazy(() => import('bar/Component'));
 
 const App = () => {
   return (
     <div>
       <h1>App</h1>
       <React.Suspense fallback="">
-        <Foo />
+        <Bar />
       </React.Suspense>
     </div>
   );
 };
+```
+
+### Run All Module Federation Applications
+
+```shell
+nx serve-mfe <host-app-name>
 ```
 
 ## API
