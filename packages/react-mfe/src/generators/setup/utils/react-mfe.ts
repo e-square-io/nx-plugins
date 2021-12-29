@@ -20,5 +20,5 @@ export interface RemotePorts {
 export const SHARED_SINGLETON_LIBRARIES = ['react', 'react-dom'];
 
 export const SETUP_REACT_MFE_DEPENDENCIES = {
-  '@angular-architects/module-federation': '13',
+  '@angular-architects/module-federation': '^13.0.1',
 };
