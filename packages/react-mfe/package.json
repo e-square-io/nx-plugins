@@ -1,0 +1,26 @@
+{
+  "name": "@e-square/nx-react-mfe",
+  "version": "0.0.1",
+  "main": "src/index.js",
+  "generators": "./generators.json",
+  "executors": "./executors.json",
+  "description": "Add Module Federation configuration to React application easily",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/e-square-io/nx-plugins.git"
+  },
+  "keywords": [
+    "nx",
+    "library",
+    "generator",
+    "react",
+    "typescript",
+    "mfe",
+    "module-federation"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/e-square-io/nx-plugins/issues"
+  },
+  "homepage": "https://github.com/e-square-io/nx-plugins#readme"
+}

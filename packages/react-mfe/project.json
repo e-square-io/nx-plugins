@@ -1,0 +1,57 @@
+{
+  "root": "packages/react-mfe",
+  "sourceRoot": "packages/react-mfe/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/react-mfe/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/react-mfe"],
+      "options": {
+        "jestConfig": "packages/react-mfe/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/react-mfe",
+        "tsConfig": "packages/react-mfe/tsconfig.lib.json",
+        "packageJson": "packages/react-mfe/package.json",
+        "main": "packages/react-mfe/src/index.ts",
+        "assets": [
+          "packages/react-mfe/*.md",
+          "LICENSE",
+          {
+            "input": "./packages/react-mfe/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./packages/react-mfe/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
+          {
+            "input": "./packages/react-mfe",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./packages/react-mfe",
+            "glob": "executors.json",
+            "output": "."
+          }
+        ]
+      }
+    }
+  },
+  "tags": []
+}

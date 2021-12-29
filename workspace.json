@@ -5,6 +5,8 @@
     "ddd-e2e": "e2e/ddd-e2e",
     "ncc": "packages/ncc",
     "ncc-e2e": "e2e/ncc-e2e",
+    "react-mfe": "packages/react-mfe",
+    "react-mfe-e2e": "e2e/react-mfe-e2e",
     "semantic-release": "packages/semantic-release",
     "semantic-release-e2e": "e2e/semantic-release-e2e"
   }

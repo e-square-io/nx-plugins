@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "cli": "nx",
+  "$id": "setup",
+  "title": "Generate Module Federation Setup for React App",
+  "description": "Create Module Federation configuration files for given React Application.",
+  "type": "object",
+  "properties": {
+    "appName": {
+      "type": "string",
+      "description": "The name of the application to generate the Module Federation configuration for.",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What app would you like to generate a Module Federation configuration for?"
+    },
+    "mfeType": {
+      "type": "string",
+      "enum": ["host", "remote"],
+      "description": "Type of application to generate the Module Federation configuration for.",
+      "x-prompt": {
+        "message": "What type of application to generate the Module Federation configuration for?",
+        "type": "list",
+        "items": [
+          {
+            "value": "host",
+            "label": "host"
+          },
+          {
+            "value": "remote",
+            "label": "remote"
+          }
+        ]
+      }
+    },
+    "port": {
+      "type": "string",
+      "description": "The port at which the application should be served.",
+      "x-prompt": "Which port the application should be served?"
+    },
+    "remotes": {
+      "type": "array",
+      "description": "A list of remote application names that the host application should consume.",
+      "default": []
+    },
+    "host": {
+      "type": "string",
+      "description": "The name of the host application that the remote application will be consumed by."
+    }
+  },
+  "required": ["appName", "mfeType", "port"]
+}
