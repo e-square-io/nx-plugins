@@ -10,15 +10,19 @@
 
 > A collection of plugins for [NX](https://nx.dev) workspaces.
 
-|             plugin              |                            version                            |                        description                         |
-| :-----------------------------: | :-----------------------------------------------------------: | :--------------------------------------------------------: |
-|       [@e-square/nx-ddd]        |              [![NPM][nx-ddd-badge]][nx-ddd-link]              |         Enforces domain-driven design development          |
-| [@e-square/nx-semantic-release] | [![NPM][nx-semantic-release-badge]][nx-semantic-release-link] | Enables usages of semantic-release per app/publishable lib |
-|       [@e-square/nx-ncc]        |       [![NPM][nx-ncc-badge]][nx-semantic-release-link]        |           Enables usage @vercel/ncc as executor            |
+|             plugin              |                            version                            |                           description                           |
+| :-----------------------------: | :-----------------------------------------------------------: | :-------------------------------------------------------------: |
+|       [@e-square/nx-ddd]        |              [![NPM][nx-ddd-badge]][nx-ddd-link]              |            Enforces domain-driven design development            |
+|    [@e-square/nx-react-mfe]     |        [![NPM][nx-react-mfe-badge]][nx-react-mfe-link]        | Add Module Federation configuration to React application easily |
+| [@e-square/nx-semantic-release] | [![NPM][nx-semantic-release-badge]][nx-semantic-release-link] |   Enables usages of semantic-release per app/publishable lib    |
+|       [@e-square/nx-ncc]        |       [![NPM][nx-ncc-badge]][nx-semantic-release-link]        |              Enables usage @vercel/ncc as executor              |
 
 [@e-square/nx-ddd]: ./packages/ddd
 [nx-ddd-link]: https://www.npmjs.com/package/@e-square/nx-ddd
 [nx-ddd-badge]: https://img.shields.io/npm/v/@e-square/nx-ddd?logo=npm&style=flat-square
+[@e-square/nx-react-mfe]: ./packages/react-mfe
+[nx-react-mfe-link]: https://www.npmjs.com/package/@e-square/nx-react-mfe
+[nx-react-mfe-badge]: https://img.shields.io/npm/v/@e-square/nx-react-mfe?logo=npm&style=flat-square
 [@e-square/nx-semantic-release]: ./packages/semantic-release
 [nx-semantic-release-link]: https://www.npmjs.com/package/@e-square/nx-semantic-release
 [nx-semantic-release-badge]: https://img.shields.io/npm/v/@e-square/nx-semantic-release?logo=npm&style=flat-square
