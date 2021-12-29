@@ -34,7 +34,7 @@ export const addRemoteToHost = (
     : hostCustomWebpackPath;
 
   const hostWebpackConfig = tree.read(selectedWebpackPath, 'utf-8') || '';
-  const webpackAst = tsquery.ast(selectedWebpackPath);
+  const webpackAst = tsquery.ast(hostWebpackConfig);
   const mfRemotesNode = tsquery(
     webpackAst,
     'Identifier[name=remotes] ~ ObjectLiteralExpression',
