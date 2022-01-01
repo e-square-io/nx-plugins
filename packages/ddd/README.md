@@ -117,4 +117,4 @@ nx g @e-square/nx-ddd:library posts --framework react --type feature --domain bl
 
 # License
 
-[MIT](../../LICENSE)
+[MIT](https://github.com/e-square-io/nx-plugins/blob/main/LICENSE)
