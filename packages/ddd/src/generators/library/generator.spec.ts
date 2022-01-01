@@ -140,4 +140,31 @@ describe('library generator', () => {
     expect(config).toBeDefined();
     expect(config.tags).toEqual(['scope:shared', 'type:util']);
   });
+
+  it('should return DDDLibraryStructure', async () => {
+    options = {
+      framework: DDDLibraryFramework.Angular,
+      type: DDDLibraryType.Feature,
+      name: 'check-the-structure',
+      domain: 'shared',
+      directory: '',
+      withoutTypePrefix: false,
+      standaloneConfig: false,
+    };
+    const dddLibraryStructure = await generator(appTree, options);
+    expect(dddLibraryStructure).toBeDefined();
+    expect(dddLibraryStructure.simpleName).toBeDefined();
+    expect(dddLibraryStructure.project).toBeDefined();
+    expect(dddLibraryStructure.tags).toBeDefined();
+    expect(dddLibraryStructure.depConstraints).toBeDefined();
+    expect(dddLibraryStructure.isDataAccess).toBeDefined();
+    expect(dddLibraryStructure.isFeature).toBeDefined();
+    expect(dddLibraryStructure.isUI).toBeDefined();
+    expect(dddLibraryStructure.isUtil).toBeDefined();
+    const config = readProjectConfiguration(
+      appTree,
+      dddLibraryStructure.project
+    );
+    expect(config).toBeDefined();
+  });
 });

@@ -5,6 +5,7 @@ import {
   DDD_PACKAGE_NAME,
   DDDLibraryFramework,
   DDDLibraryGlobalConfigurationGenerators,
+  DDDLibraryStructure,
   deleteReadmeFile,
   getWorkspaceConfigurationGenerator,
   normalizeDDDLibrary,
@@ -20,7 +21,7 @@ import { LibraryGeneratorSchema } from './schema';
 export default async (
   tree: Tree,
   options: LibraryGeneratorSchema
-): Promise<void> => {
+): Promise<DDDLibraryStructure> => {
   const workspaceConfigurationGenerator = getWorkspaceConfigurationGenerator<
     DDDLibraryGlobalConfigurationGenerators[typeof DDD_PACKAGE_NAME]
   >(tree, DDD_PACKAGE_NAME);
@@ -66,4 +67,8 @@ export default async (
   await updateEslintDepConstraints(tree, dddLibraryStructure.depConstraints);
 
   await formatFiles(tree);
+
+  return {
+    ...dddLibraryStructure,
+  };
 };
