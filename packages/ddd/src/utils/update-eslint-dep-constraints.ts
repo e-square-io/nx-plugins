@@ -1,5 +1,4 @@
 import { Tree, updateJson } from '@nrwl/devkit';
-import { fileExists } from '@nrwl/tao/src/utils/app-root';
 
 export interface DepConstraint {
   sourceTag: string;
@@ -11,7 +10,7 @@ export const updateEslintDepConstraints = (
   depConstraints: DepConstraint[]
 ): void => {
   const ruleName = '@nrwl/nx/enforce-module-boundaries';
-  const eslintFilePath: string = getEslintFilePath();
+  const eslintFilePath: string = getEslintFilePath(tree);
   updateJson(tree, eslintFilePath, (eslintJson) => {
     if (!eslintJson.overrides) {
       throw new Error(`Not found overrides property in ${eslintFilePath}`);
@@ -39,11 +38,11 @@ export const updateEslintDepConstraints = (
   });
 };
 
-export const getEslintFilePath = (): string => {
+export const getEslintFilePath = (tree: Tree): string => {
   const eslintFilePaths = ['.eslintrc', '.eslintrc.json'];
-  const eslintFilePath = eslintFilePaths.find((eslintFilePath) =>
-    fileExists(eslintFilePath)
-  );
+  const eslintFilePath = eslintFilePaths.find((eslintFilePath) => {
+    return tree.exists(eslintFilePath);
+  });
   if (!eslintFilePath) {
     throw new Error(`Couldn't find eslint file`);
   }

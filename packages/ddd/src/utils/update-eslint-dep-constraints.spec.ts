@@ -45,7 +45,7 @@ describe('updateEslintDepConstraints', () => {
     await libraryGenerator(appTree, {
       name: 'my-project',
     });
-    const eslintPath = getEslintFilePath();
+    const eslintPath = getEslintFilePath(appTree);
     updateJson(appTree, eslintPath, (eslintJson) => {
       eslintJson = {};
       return eslintJson;
@@ -63,9 +63,21 @@ describe('updateEslintDepConstraints', () => {
 });
 
 describe('getEslintFilePath', () => {
-  it('should find eslint path without an error', () => {
-    const eslintFilePath = getEslintFilePath();
-    expect(eslintFilePath).toBeDefined();
+  let appTree: Tree;
+
+  beforeEach(() => {
+    appTree = createTreeWithEmptyWorkspace(2);
+  });
+
+  it('should throw an error if eslint not exists', () => {
+    expect(() => getEslintFilePath(appTree)).toThrowError();
+  });
+
+  it('should find eslint path without an error', async () => {
+    await libraryGenerator(appTree, {
+      name: 'my-project',
+    });
+    expect(getEslintFilePath(appTree)).toBeDefined();
   });
 });
 
