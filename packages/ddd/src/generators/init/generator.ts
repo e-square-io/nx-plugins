@@ -4,6 +4,7 @@ import {
   DDD_PACKAGE_NAME,
   DDDLibraryGlobalConfigurationGenerators,
   normalizeDDDLibraryGlobalConfiguration,
+  updateApplicationsTags,
   updateEslintDepConstraints,
   updateWorkspaceConfigurationGenerators,
 } from '../../utils';
@@ -26,6 +27,8 @@ export default async (
   );
 
   updateEslintDepConstraints(tree, DEFAULT_DEP_CONSTRAINTS);
+
+  updateApplicationsTags(tree, ['type:app']);
 
   await formatFiles(tree);
 };

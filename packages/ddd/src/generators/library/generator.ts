@@ -10,6 +10,7 @@ import {
   getWorkspaceConfigurationGenerator,
   normalizeDDDLibrary,
   normalizeDDDLibraryGlobalConfiguration,
+  updateApplicationsTags,
   updateEslintDepConstraints,
   validateProjectBeforeCreation,
 } from '../../utils';
@@ -65,6 +66,8 @@ export default async (
   }
 
   await updateEslintDepConstraints(tree, dddLibraryStructure.depConstraints);
+
+  updateApplicationsTags(tree, ['type:app']);
 
   await formatFiles(tree);
 

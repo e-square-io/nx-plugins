@@ -11,6 +11,7 @@ export * from './get-workspace-configuration-generator';
 export * from './is-project-already-exists';
 export * from './normalize-ddd-library';
 export * from './normalize-ddd-library-global-configuration';
+export * from './update-applications-tags';
 export * from './update-eslint-dep-constraints';
 export * from './update-workspace-configuration-generators';
 export * from './validate-project-before-creation';
