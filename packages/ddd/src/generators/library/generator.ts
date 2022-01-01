@@ -7,6 +7,7 @@ import {
   DDDLibraryGlobalConfigurationGenerators,
   DDDLibraryStructure,
   deleteReadmeFile,
+  DepConstraintTag,
   getWorkspaceConfigurationGenerator,
   normalizeDDDLibrary,
   normalizeDDDLibraryGlobalConfiguration,
@@ -67,7 +68,7 @@ export default async (
 
   await updateEslintDepConstraints(tree, dddLibraryStructure.depConstraints);
 
-  updateApplicationsTags(tree, ['type:app']);
+  updateApplicationsTags(tree, [DepConstraintTag.Application]);
 
   await formatFiles(tree);
 

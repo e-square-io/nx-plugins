@@ -95,3 +95,11 @@ export const DEFAULT_DDD_LIBRARY_REACT: DDDLibraryReact = {
   createStories: false,
   unitTestRunner: ReactUnitTestRunner.Jest,
 };
+
+export enum DepConstraintTag {
+  Application = 'type:app',
+  Feature = 'type:feature',
+  UI = 'type:ui',
+  DataAccess = 'type:data-access',
+  Util = 'type:util',
+}

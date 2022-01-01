@@ -3,6 +3,7 @@ import { formatFiles, Tree } from '@nrwl/devkit';
 import {
   DDD_PACKAGE_NAME,
   DDDLibraryGlobalConfigurationGenerators,
+  DepConstraintTag,
   normalizeDDDLibraryGlobalConfiguration,
   updateApplicationsTags,
   updateEslintDepConstraints,
@@ -28,7 +29,7 @@ export default async (
 
   updateEslintDepConstraints(tree, DEFAULT_DEP_CONSTRAINTS);
 
-  updateApplicationsTags(tree, ['type:app']);
+  updateApplicationsTags(tree, [DepConstraintTag.Application]);
 
   await formatFiles(tree);
 };
