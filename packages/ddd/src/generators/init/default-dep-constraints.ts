@@ -12,11 +12,16 @@ export const DEFAULT_DEP_CONSTRAINTS: DepConstraint[] = [
   },
   {
     sourceTag: 'type:feature',
-    onlyDependOnLibsWithTags: ['type:ui', 'type:data-access', 'type:util'],
+    onlyDependOnLibsWithTags: [
+      'type:feature',
+      'type:ui',
+      'type:data-access',
+      'type:util',
+    ],
   },
   {
     sourceTag: 'type:ui',
-    onlyDependOnLibsWithTags: ['type:ui', 'type:util'],
+    onlyDependOnLibsWithTags: ['type:ui', 'type:data-access', 'type:util'],
   },
   {
     sourceTag: 'type:data-access',
