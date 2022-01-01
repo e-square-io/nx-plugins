@@ -12,7 +12,7 @@ import {
 import { DEFAULT_DEP_CONSTRAINTS } from './default-dep-constraints';
 import { InitGeneratorSchema } from './schema';
 
-export default async (
+export const dddInitGenerator = async (
   tree: Tree,
   options: InitGeneratorSchema
 ): Promise<void> => {
@@ -33,3 +33,5 @@ export default async (
 
   await formatFiles(tree);
 };
+
+export default dddInitGenerator;

@@ -2,7 +2,7 @@ import { readProjectConfiguration, Tree } from '@nrwl/devkit';
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 
 import { DDDLibraryFramework, DDDLibraryType } from '../../utils';
-import generator from './generator';
+import generator, { dddLibraryGenerator } from './generator';
 import { LibraryGeneratorSchema } from './schema';
 
 describe('library generator', () => {
@@ -151,7 +151,7 @@ describe('library generator', () => {
       withoutTypePrefix: false,
       standaloneConfig: false,
     };
-    const dddLibraryStructure = await generator(appTree, options);
+    const dddLibraryStructure = await dddLibraryGenerator(appTree, options);
     expect(dddLibraryStructure).toBeDefined();
     expect(dddLibraryStructure.simpleName).toBeDefined();
     expect(dddLibraryStructure.project).toBeDefined();

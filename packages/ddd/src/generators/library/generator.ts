@@ -20,7 +20,7 @@ import { createLibraryDataAccessFiles } from './create-library-data-access-files
 import { createReactGenerations } from './create-react-generations';
 import { LibraryGeneratorSchema } from './schema';
 
-export default async (
+export const dddLibraryGenerator = async (
   tree: Tree,
   options: LibraryGeneratorSchema
 ): Promise<DDDLibraryStructure> => {
@@ -75,4 +75,11 @@ export default async (
   return {
     ...dddLibraryStructure,
   };
+};
+
+export default async (
+  tree: Tree,
+  options: LibraryGeneratorSchema
+): Promise<void> => {
+  await dddLibraryGenerator(tree, options);
 };
