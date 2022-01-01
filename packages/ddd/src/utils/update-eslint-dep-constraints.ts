@@ -22,16 +22,17 @@ export const updateEslintDepConstraints = (
         if (!ruleInnerObj) {
           throw new Error(`Found ${ruleName} but inner object doesn't exists`);
         }
-        const depConstraintsWithoutGlob =
-          removeGlobalDepConstraints(depConstraints);
         const depConstraintsWithoutDuplicates = filterDepConstraintsDuplicates(
-          depConstraintsWithoutGlob,
+          depConstraints,
           ruleInnerObj.depConstraints
         );
-        ruleInnerObj.depConstraints = [
+        const updatedDepConstraints = [
           ...ruleInnerObj.depConstraints,
           ...depConstraintsWithoutDuplicates,
         ];
+        ruleInnerObj.depConstraints = removeGlobalDepConstraints(
+          updatedDepConstraints
+        );
       }
     });
     return eslintJson;
@@ -66,15 +67,15 @@ export const filterDepConstraintsDuplicates = (
 export const removeGlobalDepConstraints = (
   depConstraints: DepConstraint[]
 ): DepConstraint[] => {
-  const GLOB_TAG = '*';
+  const GLOBAL_TAG = '*';
   return depConstraints.filter((depConstraint) => {
     return !(
       depConstraint.sourceTag &&
-      depConstraint.sourceTag === GLOB_TAG &&
+      depConstraint.sourceTag === GLOBAL_TAG &&
       depConstraint.onlyDependOnLibsWithTags &&
       Array.isArray(depConstraint.onlyDependOnLibsWithTags) &&
       depConstraint.onlyDependOnLibsWithTags.length > 0 &&
-      depConstraint.onlyDependOnLibsWithTags[0] === GLOB_TAG
+      depConstraint.onlyDependOnLibsWithTags[0] === GLOBAL_TAG
     );
   });
 };
