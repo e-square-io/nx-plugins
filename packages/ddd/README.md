@@ -15,6 +15,7 @@ Enforces domain-driven design development.
 1. [Installation](#installation)
 1. [Usage](#usage)
 1. [API](#api)
+1. [How To Customize the Library Generator](#how-to-customize-the-library-generator)
 1. [License](#license)
 
 ## Prerequisites
@@ -114,6 +115,65 @@ nx g @e-square/nx-ddd:library posts --framework react --type feature --domain bl
 | `directory`         |       | string                                                   | ''            | A directory where the library is placed inside the domain directory                                                                       |
 | `withoutTypePrefix` |       | boolean                                                  | false         | Create the library inside library type directory `<domainName>/<libraryType>-<libraryName>` to `<domainName>/<libraryType>/<libraryName>` |
 | `standaloneConfig`  |       | boolean                                                  | false         | Split the project configuration into `<projectRoot>/project.json` rather than including it inside `workspace.json`                        |
+
+## How To Customize the Library Generator
+
+There are situations you need to customize the generated files more than what exists today.
+
+It's very easy to customize existing generators with nx workspace generators.
+
+This library exposed the generators to allow customization.
+
+### Create Nx Workspace Generator
+
+```shell
+nx g workspace-generator shared-ui
+```
+
+### Update The Generator Implementation
+
+```ts
+import { formatFiles, readProjectConfiguration, Tree } from '@nrwl/devkit';
+
+import {
+  DDDLibraryFramework,
+  dddLibraryGenerator,
+  DDDLibraryType,
+} from '@e-square/nx-ddd';
+
+import { SharedUIScheme } from './scheme';
+
+export default async (tree: Tree, { name }: SharedUIScheme): Promise<void> => {
+  // Creates the library and return dddLibraryStructure object.
+  const dddLibraryStructure = await dddLibraryGenerator(tree, {
+    name,
+    framework: DDDLibraryFramework.Angular,
+    type: DDDLibraryType.UI,
+    domain: 'shared',
+    withoutTypePrefix: true,
+    standaloneConfig: true,
+  });
+
+  // Let's read the project which was created.
+  const projectConfiguration = readProjectConfiguration(
+    tree,
+    dddLibraryStructure.project
+  );
+
+  /**
+   * Here you can use the projectConfiguration
+   * For adding, deleting and updating files.
+   */
+
+  await formatFiles(tree);
+};
+```
+
+### Run The Generator
+
+```shell
+nx workspace-generator shared-ui --name button
+```
 
 # License
 
