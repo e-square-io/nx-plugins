@@ -5,6 +5,7 @@ import { libraryGenerator } from '@nrwl/workspace';
 import {
   filterDepConstraintsDuplicates,
   getEslintFilePath,
+  removeGlobalDepConstraints,
   updateEslintDepConstraints,
 } from './update-eslint-dep-constraints';
 
@@ -82,6 +83,7 @@ describe('filterDepConstraintsDuplicates', () => {
       ruleDepConstraints
     );
     expect(depConstraintsWithoutDuplicates).toHaveLength(1);
+    expect(depConstraintsWithoutDuplicates).toEqual(depConstraints);
   });
 
   it('should not add depConstraints', () => {
@@ -102,5 +104,54 @@ describe('filterDepConstraintsDuplicates', () => {
       ruleDepConstraints
     );
     expect(depConstraintsWithoutDuplicates).toHaveLength(0);
+    expect(depConstraintsWithoutDuplicates).toEqual([]);
+  });
+});
+
+describe('removeGlobalDepConstraints', () => {
+  it('should remove glob tags', () => {
+    const depConstraints = [
+      {
+        sourceTag: '*',
+        onlyDependOnLibsWithTags: ['*'],
+      },
+    ];
+    const depConstraintsWithoutGlob =
+      removeGlobalDepConstraints(depConstraints);
+    expect(depConstraintsWithoutGlob).toHaveLength(0);
+    expect(depConstraintsWithoutGlob).toEqual([]);
+  });
+
+  it('should not remove mixed glob tags', () => {
+    const depConstraints = [
+      {
+        sourceTag: '*',
+        onlyDependOnLibsWithTags: ['scope:hi', '*'],
+      },
+    ];
+    const depConstraintsWithoutGlob =
+      removeGlobalDepConstraints(depConstraints);
+    expect(depConstraintsWithoutGlob).toHaveLength(1);
+    expect(depConstraintsWithoutGlob).toEqual(depConstraints);
+  });
+
+  it('should remove only glob tags', () => {
+    const scopeDepConstraints = [
+      {
+        sourceTag: 'scope:shared',
+        onlyDependOnLibsWithTags: ['scope:shared', 'scope:blog'],
+      },
+    ];
+    const depConstraints = [
+      ...scopeDepConstraints,
+      {
+        sourceTag: '*',
+        onlyDependOnLibsWithTags: ['*'],
+      },
+    ];
+    const depConstraintsWithoutGlob =
+      removeGlobalDepConstraints(depConstraints);
+    expect(depConstraintsWithoutGlob).toHaveLength(1);
+    expect(depConstraintsWithoutGlob).toEqual(scopeDepConstraints);
   });
 });

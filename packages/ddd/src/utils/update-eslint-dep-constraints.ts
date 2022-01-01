@@ -23,8 +23,10 @@ export const updateEslintDepConstraints = (
         if (!ruleInnerObj) {
           throw new Error(`Found ${ruleName} but inner object doesn't exists`);
         }
+        const depConstraintsWithoutGlob =
+          removeGlobalDepConstraints(depConstraints);
         const depConstraintsWithoutDuplicates = filterDepConstraintsDuplicates(
-          depConstraints,
+          depConstraintsWithoutGlob,
           ruleInnerObj.depConstraints
         );
         ruleInnerObj.depConstraints = [
@@ -59,5 +61,21 @@ export const filterDepConstraintsDuplicates = (
         JSON.stringify(depConstraint)
       );
     });
+  });
+};
+
+export const removeGlobalDepConstraints = (
+  depConstraints: DepConstraint[]
+): DepConstraint[] => {
+  const GLOB_TAG = '*';
+  return depConstraints.filter((depConstraint) => {
+    return !(
+      depConstraint.sourceTag &&
+      depConstraint.sourceTag === GLOB_TAG &&
+      depConstraint.onlyDependOnLibsWithTags &&
+      Array.isArray(depConstraint.onlyDependOnLibsWithTags) &&
+      depConstraint.onlyDependOnLibsWithTags.length > 0 &&
+      depConstraint.onlyDependOnLibsWithTags[0] === GLOB_TAG
+    );
   });
 };
