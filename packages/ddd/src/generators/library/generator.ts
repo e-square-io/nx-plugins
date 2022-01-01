@@ -5,6 +5,7 @@ import {
   DDD_PACKAGE_NAME,
   DDDLibraryFramework,
   DDDLibraryGlobalConfigurationGenerators,
+  deleteReadmeFile,
   getWorkspaceConfigurationGenerator,
   normalizeDDDLibrary,
   normalizeDDDLibraryGlobalConfiguration,
@@ -56,6 +57,10 @@ export default async (
 
   if (dddLibraryStructure.isDataAccess) {
     await createLibraryDataAccessFiles(tree, dddLibraryStructure.project);
+  }
+
+  if (globalConfiguration.removeReadme) {
+    deleteReadmeFile(tree, dddLibraryStructure.project);
   }
 
   await updateEslintDepConstraints(tree, dddLibraryStructure.depConstraints);

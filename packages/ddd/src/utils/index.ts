@@ -5,6 +5,7 @@ export * from './create-react-component';
 export * from './create-react-component-stories';
 export * from './ddd-library';
 export * from './ddd-pacakge-name';
+export * from './delete-readme-file';
 export * from './get-project-source-root';
 export * from './get-workspace-configuration-generator';
 export * from './is-project-already-exists';

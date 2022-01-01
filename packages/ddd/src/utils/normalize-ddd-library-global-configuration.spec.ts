@@ -5,6 +5,7 @@ import {
   DEFAULT_DDD_LIBRARY_ANGULAR,
   DEFAULT_DDD_LIBRARY_REACT,
   DEFAULT_DOMAIN_TAG_NAME,
+  DEFAULT_REMOVE_README,
   DEFAULT_SHARED_DOMAIN,
   ReactUnitTestRunner,
 } from './ddd-library';
@@ -15,6 +16,7 @@ describe('normalizeDDDLibraryGlobalConfiguration', () => {
     expect(normalizeDDDLibraryGlobalConfiguration()).toEqual({
       sharedDomain: DEFAULT_SHARED_DOMAIN,
       domainTagName: DEFAULT_DOMAIN_TAG_NAME,
+      removeReadme: DEFAULT_REMOVE_README,
       [DDDLibraryFramework.Angular]: {
         ...DEFAULT_DDD_LIBRARY_ANGULAR,
       },
@@ -28,6 +30,7 @@ describe('normalizeDDDLibraryGlobalConfiguration', () => {
     const defaultValues: DDDLibraryGlobalConfiguration = {
       sharedDomain: 'myCustomShared',
       domainTagName: 'domain_da',
+      removeReadme: true,
       [DDDLibraryFramework.Angular]: {
         prefix: 'myApp',
         flat: false,
