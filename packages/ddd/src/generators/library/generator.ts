@@ -4,6 +4,7 @@ import {
   createDDDLibraryStructure,
   DDD_PACKAGE_NAME,
   DDDLibraryFramework,
+  DDDLibraryGlobalConfiguration,
   DDDLibraryGlobalConfigurationGenerators,
   DDDLibraryStructure,
   deleteReadmeFile,
@@ -22,14 +23,16 @@ import { LibraryGeneratorSchema } from './schema';
 
 export const dddLibraryGenerator = async (
   tree: Tree,
-  options: LibraryGeneratorSchema
+  options: LibraryGeneratorSchema,
+  globalOptions: Partial<DDDLibraryGlobalConfiguration> = {}
 ): Promise<DDDLibraryStructure> => {
   const workspaceConfigurationGenerator = getWorkspaceConfigurationGenerator<
     DDDLibraryGlobalConfigurationGenerators[typeof DDD_PACKAGE_NAME]
   >(tree, DDD_PACKAGE_NAME);
-  const globalConfiguration = normalizeDDDLibraryGlobalConfiguration(
-    workspaceConfigurationGenerator?.library || {}
-  );
+  const globalConfiguration = normalizeDDDLibraryGlobalConfiguration({
+    ...(workspaceConfigurationGenerator?.library || {}),
+    ...globalOptions,
+  });
 
   const dddLibrary = normalizeDDDLibrary(options);
   const dddLibraryStructure = createDDDLibraryStructure(
