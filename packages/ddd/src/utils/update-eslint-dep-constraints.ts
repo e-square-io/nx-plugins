@@ -1,5 +1,4 @@
 import { Tree, updateJson } from '@nrwl/devkit';
-import { fileExists } from '@nrwl/tao/src/utils/app-root';
 
 export interface DepConstraint {
   sourceTag: string;
@@ -11,7 +10,7 @@ export const updateEslintDepConstraints = (
   depConstraints: DepConstraint[]
 ): void => {
   const ruleName = '@nrwl/nx/enforce-module-boundaries';
-  const eslintFilePath: string = getEslintFilePath();
+  const eslintFilePath: string = getEslintFilePath(tree);
   updateJson(tree, eslintFilePath, (eslintJson) => {
     if (!eslintJson.overrides) {
       throw new Error(`Not found overrides property in ${eslintFilePath}`);
@@ -27,21 +26,24 @@ export const updateEslintDepConstraints = (
           depConstraints,
           ruleInnerObj.depConstraints
         );
-        ruleInnerObj.depConstraints = [
+        const updatedDepConstraints = [
           ...ruleInnerObj.depConstraints,
           ...depConstraintsWithoutDuplicates,
         ];
+        ruleInnerObj.depConstraints = moveGlobalDepConstraintsToTheEnd(
+          updatedDepConstraints
+        );
       }
     });
     return eslintJson;
   });
 };
 
-export const getEslintFilePath = (): string => {
+export const getEslintFilePath = (tree: Tree): string => {
   const eslintFilePaths = ['.eslintrc', '.eslintrc.json'];
-  const eslintFilePath = eslintFilePaths.find((eslintFilePath) =>
-    fileExists(eslintFilePath)
-  );
+  const eslintFilePath = eslintFilePaths.find((eslintFilePath) => {
+    return tree.exists(eslintFilePath);
+  });
   if (!eslintFilePath) {
     throw new Error(`Couldn't find eslint file`);
   }
@@ -60,4 +62,33 @@ export const filterDepConstraintsDuplicates = (
       );
     });
   });
+};
+
+export const moveGlobalDepConstraintsToTheEnd = (
+  depConstraints: DepConstraint[]
+): DepConstraint[] => {
+  const globalDepConstraint = depConstraints.find(isGlobalDepConstraint);
+  if (!globalDepConstraint) {
+    return [...depConstraints];
+  }
+  return [
+    ...depConstraints.filter(
+      (depConstraint) => !isGlobalDepConstraint(depConstraint)
+    ),
+    globalDepConstraint,
+  ];
+};
+
+export const isGlobalDepConstraint = (
+  depConstraint: DepConstraint
+): boolean => {
+  const GLOBAL_TAG = '*';
+  return (
+    depConstraint.sourceTag &&
+    depConstraint.sourceTag === GLOBAL_TAG &&
+    depConstraint.onlyDependOnLibsWithTags &&
+    Array.isArray(depConstraint.onlyDependOnLibsWithTags) &&
+    depConstraint.onlyDependOnLibsWithTags.length > 0 &&
+    depConstraint.onlyDependOnLibsWithTags[0] === GLOBAL_TAG
+  );
 };

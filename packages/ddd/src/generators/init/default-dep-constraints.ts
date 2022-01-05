@@ -1,29 +1,41 @@
-import { DepConstraint } from './../../utils';
+import { DepConstraint, DepConstraintTag } from './../../utils';
 
 export const DEFAULT_DEP_CONSTRAINTS: DepConstraint[] = [
   {
-    sourceTag: 'type:app',
+    sourceTag: DepConstraintTag.Application,
     onlyDependOnLibsWithTags: [
-      'type:feature',
-      'type:ui',
-      'type:data-access',
-      'type:util',
+      DepConstraintTag.Feature,
+      DepConstraintTag.UI,
+      DepConstraintTag.DataAccess,
+      DepConstraintTag.Util,
     ],
   },
   {
-    sourceTag: 'type:feature',
-    onlyDependOnLibsWithTags: ['type:ui', 'type:data-access', 'type:util'],
+    sourceTag: DepConstraintTag.Feature,
+    onlyDependOnLibsWithTags: [
+      DepConstraintTag.Feature,
+      DepConstraintTag.UI,
+      DepConstraintTag.DataAccess,
+      DepConstraintTag.Util,
+    ],
   },
   {
-    sourceTag: 'type:ui',
-    onlyDependOnLibsWithTags: ['type:ui', 'type:util'],
+    sourceTag: DepConstraintTag.UI,
+    onlyDependOnLibsWithTags: [
+      DepConstraintTag.UI,
+      DepConstraintTag.DataAccess,
+      DepConstraintTag.Util,
+    ],
   },
   {
-    sourceTag: 'type:data-access',
-    onlyDependOnLibsWithTags: ['type:data-access', 'type:util'],
+    sourceTag: DepConstraintTag.DataAccess,
+    onlyDependOnLibsWithTags: [
+      DepConstraintTag.DataAccess,
+      DepConstraintTag.Util,
+    ],
   },
   {
-    sourceTag: 'type:util',
-    onlyDependOnLibsWithTags: ['type:util'],
+    sourceTag: DepConstraintTag.Util,
+    onlyDependOnLibsWithTags: [DepConstraintTag.Util],
   },
 ];

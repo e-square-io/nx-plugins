@@ -2,7 +2,7 @@ import { readProjectConfiguration, Tree } from '@nrwl/devkit';
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 
 import { DDDLibraryFramework, DDDLibraryType } from '../../utils';
-import generator from './generator';
+import generator, { dddLibraryGenerator } from './generator';
 import { LibraryGeneratorSchema } from './schema';
 
 describe('library generator', () => {
@@ -139,5 +139,32 @@ describe('library generator', () => {
     const config = readProjectConfiguration(appTree, 'shared-util-validators');
     expect(config).toBeDefined();
     expect(config.tags).toEqual(['scope:shared', 'type:util']);
+  });
+
+  it('should return DDDLibraryStructure', async () => {
+    options = {
+      framework: DDDLibraryFramework.Angular,
+      type: DDDLibraryType.Feature,
+      name: 'check-the-structure',
+      domain: 'shared',
+      directory: '',
+      withoutTypePrefix: false,
+      standaloneConfig: false,
+    };
+    const dddLibraryStructure = await dddLibraryGenerator(appTree, options);
+    expect(dddLibraryStructure).toBeDefined();
+    expect(dddLibraryStructure.simpleName).toBeDefined();
+    expect(dddLibraryStructure.project).toBeDefined();
+    expect(dddLibraryStructure.tags).toBeDefined();
+    expect(dddLibraryStructure.depConstraints).toBeDefined();
+    expect(dddLibraryStructure.isDataAccess).toBeDefined();
+    expect(dddLibraryStructure.isFeature).toBeDefined();
+    expect(dddLibraryStructure.isUI).toBeDefined();
+    expect(dddLibraryStructure.isUtil).toBeDefined();
+    const config = readProjectConfiguration(
+      appTree,
+      dddLibraryStructure.project
+    );
+    expect(config).toBeDefined();
   });
 });

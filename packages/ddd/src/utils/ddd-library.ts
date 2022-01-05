@@ -52,6 +52,7 @@ export const enum ReactUnitTestRunner {
 export interface DDDLibraryGlobalConfiguration {
   sharedDomain: string;
   domainTagName: string;
+  removeReadme: boolean;
   [DDDLibraryFramework.Angular]: DDDLibraryAngular;
   [DDDLibraryFramework.React]: DDDLibraryReact;
 }
@@ -74,6 +75,7 @@ export const DEFAULT_DDD_LIBRARY: Pick<
 
 export const DEFAULT_SHARED_DOMAIN = 'shared';
 export const DEFAULT_DOMAIN_TAG_NAME = 'scope';
+export const DEFAULT_REMOVE_README = false;
 
 export const DEFAULT_DDD_LIBRARY_ANGULAR: DDDLibraryAngular = {
   prefix: '',
@@ -93,3 +95,11 @@ export const DEFAULT_DDD_LIBRARY_REACT: DDDLibraryReact = {
   createStories: false,
   unitTestRunner: ReactUnitTestRunner.Jest,
 };
+
+export enum DepConstraintTag {
+  Application = 'type:app',
+  Feature = 'type:feature',
+  UI = 'type:ui',
+  DataAccess = 'type:data-access',
+  Util = 'type:util',
+}
