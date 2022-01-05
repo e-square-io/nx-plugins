@@ -1,3 +1,9 @@
+# [1.2.0](https://github.com/e-square-io/nx-plugins/compare/v1.1.0...v1.2.0) (2022-01-05)
+
+### Features
+
+- **ddd:** add removeReadme option to allow skipping readme ([ffac92a](https://github.com/e-square-io/nx-plugins/commit/ffac92a944c94e01fdff82bbe006219a09deb8a0))
+
 # [1.1.0](https://github.com/e-square-io/nx-plugins/compare/v1.0.9...v1.1.0) (2021-12-09)
 
 ### Features
