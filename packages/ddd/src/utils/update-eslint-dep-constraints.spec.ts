@@ -153,6 +153,10 @@ describe('moveGlobalDepConstraintsToTheEnd', () => {
         sourceTag: 'scope:lol',
         onlyDependOnLibsWithTags: ['scope:lol'],
       },
+      {
+        sourceTag: 'scope:dod',
+        onlyDependOnLibsWithTags: ['scope:dod'],
+      },
     ];
     const depConstraints = [
       ...scopeDepConstraints,
@@ -164,8 +168,9 @@ describe('moveGlobalDepConstraintsToTheEnd', () => {
     ];
     const updatedDepConstraints =
       moveGlobalDepConstraintsToTheEnd(depConstraints);
-    expect(updatedDepConstraints).toHaveLength(2);
+    expect(updatedDepConstraints).toHaveLength(5);
     expect(updatedDepConstraints).toEqual([
+      ...scopeDepConstraints,
       ...scopeDepConstraints,
       {
         sourceTag: '*',
@@ -194,7 +199,7 @@ describe('moveGlobalDepConstraintsToTheEnd', () => {
     ];
     const updatedDepConstraints =
       moveGlobalDepConstraintsToTheEnd(depConstraints);
-    expect(updatedDepConstraints).toHaveLength(2);
+    expect(updatedDepConstraints).toHaveLength(3);
     expect(updatedDepConstraints).toEqual([
       ...scopeDepConstraints,
       {
