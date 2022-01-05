@@ -30,7 +30,7 @@ export const updateEslintDepConstraints = (
           ...ruleInnerObj.depConstraints,
           ...depConstraintsWithoutDuplicates,
         ];
-        ruleInnerObj.depConstraints = removeGlobalDepConstraints(
+        ruleInnerObj.depConstraints = moveGlobalDepConstraintsToTheEnd(
           updatedDepConstraints
         );
       }
@@ -64,18 +64,31 @@ export const filterDepConstraintsDuplicates = (
   });
 };
 
-export const removeGlobalDepConstraints = (
+export const moveGlobalDepConstraintsToTheEnd = (
   depConstraints: DepConstraint[]
 ): DepConstraint[] => {
+  const globalDepConstraint = depConstraints.find(isGlobalDepConstraint);
+  if (!globalDepConstraint) {
+    return [...depConstraints];
+  }
+  return [
+    ...depConstraints.filter(
+      (depConstraint) => !isGlobalDepConstraint(depConstraint)
+    ),
+    globalDepConstraint,
+  ];
+};
+
+export const isGlobalDepConstraint = (
+  depConstraint: DepConstraint
+): boolean => {
   const GLOBAL_TAG = '*';
-  return depConstraints.filter((depConstraint) => {
-    return !(
-      depConstraint.sourceTag &&
-      depConstraint.sourceTag === GLOBAL_TAG &&
-      depConstraint.onlyDependOnLibsWithTags &&
-      Array.isArray(depConstraint.onlyDependOnLibsWithTags) &&
-      depConstraint.onlyDependOnLibsWithTags.length > 0 &&
-      depConstraint.onlyDependOnLibsWithTags[0] === GLOBAL_TAG
-    );
-  });
+  return (
+    depConstraint.sourceTag &&
+    depConstraint.sourceTag === GLOBAL_TAG &&
+    depConstraint.onlyDependOnLibsWithTags &&
+    Array.isArray(depConstraint.onlyDependOnLibsWithTags) &&
+    depConstraint.onlyDependOnLibsWithTags.length > 0 &&
+    depConstraint.onlyDependOnLibsWithTags[0] === GLOBAL_TAG
+  );
 };

@@ -5,7 +5,7 @@ import { libraryGenerator } from '@nrwl/workspace';
 import {
   filterDepConstraintsDuplicates,
   getEslintFilePath,
-  removeGlobalDepConstraints,
+  moveGlobalDepConstraintsToTheEnd,
   updateEslintDepConstraints,
 } from './update-eslint-dep-constraints';
 
@@ -121,33 +121,33 @@ describe('filterDepConstraintsDuplicates', () => {
 });
 
 describe('removeGlobalDepConstraints', () => {
-  it('should remove glob tags', () => {
+  it('should glob tags stay the same', () => {
     const depConstraints = [
       {
         sourceTag: '*',
         onlyDependOnLibsWithTags: ['*'],
       },
     ];
-    const depConstraintsWithoutGlob =
-      removeGlobalDepConstraints(depConstraints);
-    expect(depConstraintsWithoutGlob).toHaveLength(0);
-    expect(depConstraintsWithoutGlob).toEqual([]);
+    const depConstraintsUpdated =
+      moveGlobalDepConstraintsToTheEnd(depConstraints);
+    expect(depConstraintsUpdated).toHaveLength(1);
+    expect(depConstraintsUpdated).toEqual(depConstraints);
   });
 
-  it('should not remove mixed glob tags', () => {
+  it('should not move mixed glob tags', () => {
     const depConstraints = [
       {
         sourceTag: '*',
         onlyDependOnLibsWithTags: ['scope:hi', '*'],
       },
     ];
-    const depConstraintsWithoutGlob =
-      removeGlobalDepConstraints(depConstraints);
-    expect(depConstraintsWithoutGlob).toHaveLength(1);
-    expect(depConstraintsWithoutGlob).toEqual(depConstraints);
+    const depConstraintsUpdated =
+      moveGlobalDepConstraintsToTheEnd(depConstraints);
+    expect(depConstraintsUpdated).toHaveLength(1);
+    expect(depConstraintsUpdated).toEqual(depConstraints);
   });
 
-  it('should remove only glob tags', () => {
+  it('should move glob tags to the end', () => {
     const scopeDepConstraints = [
       {
         sourceTag: 'scope:shared',
@@ -155,15 +155,21 @@ describe('removeGlobalDepConstraints', () => {
       },
     ];
     const depConstraints = [
+      {
+        sourceTag: '*',
+        onlyDependOnLibsWithTags: ['*'],
+      },
+      ...scopeDepConstraints,
+    ];
+    const updatedDepConstraints =
+      moveGlobalDepConstraintsToTheEnd(depConstraints);
+    expect(updatedDepConstraints).toHaveLength(2);
+    expect(updatedDepConstraints).toEqual([
       ...scopeDepConstraints,
       {
         sourceTag: '*',
         onlyDependOnLibsWithTags: ['*'],
       },
-    ];
-    const depConstraintsWithoutGlob =
-      removeGlobalDepConstraints(depConstraints);
-    expect(depConstraintsWithoutGlob).toHaveLength(1);
-    expect(depConstraintsWithoutGlob).toEqual(scopeDepConstraints);
+    ]);
   });
 });
