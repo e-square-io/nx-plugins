@@ -120,7 +120,7 @@ describe('filterDepConstraintsDuplicates', () => {
   });
 });
 
-describe('removeGlobalDepConstraints', () => {
+describe('moveGlobalDepConstraintsToTheEnd', () => {
   it('should glob tags stay the same', () => {
     const depConstraints = [
       {
@@ -147,11 +147,42 @@ describe('removeGlobalDepConstraints', () => {
     expect(depConstraintsUpdated).toEqual(depConstraints);
   });
 
+  it('should move glob tags from the middle to the end', () => {
+    const scopeDepConstraints = [
+      {
+        sourceTag: 'scope:lol',
+        onlyDependOnLibsWithTags: ['scope:lol'],
+      },
+    ];
+    const depConstraints = [
+      ...scopeDepConstraints,
+      {
+        sourceTag: '*',
+        onlyDependOnLibsWithTags: ['*'],
+      },
+      ...scopeDepConstraints,
+    ];
+    const updatedDepConstraints =
+      moveGlobalDepConstraintsToTheEnd(depConstraints);
+    expect(updatedDepConstraints).toHaveLength(2);
+    expect(updatedDepConstraints).toEqual([
+      ...scopeDepConstraints,
+      {
+        sourceTag: '*',
+        onlyDependOnLibsWithTags: ['*'],
+      },
+    ]);
+  });
+
   it('should move glob tags to the end', () => {
     const scopeDepConstraints = [
       {
+        sourceTag: 'scope:blog',
+        onlyDependOnLibsWithTags: ['scope:blog', 'scope:shared'],
+      },
+      {
         sourceTag: 'scope:shared',
-        onlyDependOnLibsWithTags: ['scope:shared', 'scope:blog'],
+        onlyDependOnLibsWithTags: ['scope:shared'],
       },
     ];
     const depConstraints = [
