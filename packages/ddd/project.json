@@ -15,7 +15,8 @@
       "outputs": ["coverage/packages/ddd"],
       "options": {
         "jestConfig": "packages/ddd/jest.config.js",
-        "passWithNoTests": true
+        "passWithNoTests": true,
+        "codeCoverage": true
       }
     },
     "build": {
